@@ -22,6 +22,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="pie.app.foodtesting.ResultActivity"></activity>
+        <activity android:name="pie.app.foodtesting.WaitingActivity"></activity>
+        <activity android:name="pie.app.foodtesting.WorkActivity"></activity>
     </application>
 
 </manifest>
