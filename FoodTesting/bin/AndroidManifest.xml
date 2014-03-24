@@ -25,6 +25,8 @@
         <activity android:name="pie.app.foodtesting.ResultActivity"></activity>
         <activity android:name="pie.app.foodtesting.WaitingActivity"></activity>
         <activity android:name="pie.app.foodtesting.WorkActivity"></activity>
+        <activity android:name="attribute_inTest.Attribute"></activity>
+      
     </application>
 
 </manifest>

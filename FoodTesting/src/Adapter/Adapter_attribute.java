@@ -1,11 +1,18 @@
 package Adapter;
 
 import pie.app.foodtesting.R;
+import android.annotation.SuppressLint;
+import android.app.ActionBar.LayoutParams;
 import android.content.Context;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.SeekBar;
+import android.widget.TextView;
 
 public class Adapter_attribute extends BaseExpandableListAdapter{
 	
@@ -27,20 +34,59 @@ public class Adapter_attribute extends BaseExpandableListAdapter{
 		return 0;
 	}
 
+	@SuppressLint("NewApi")
 	@Override
 	public View getChildView(int groupPosition, int childPosition,
 			boolean isLastChild, View convertView, ViewGroup parent) {
 		
 		LayoutInflater inflater =  (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 	    convertView = inflater.inflate(R.layout.item_seekbar, null);
-	  
-		return null;
+	    
+	    LinearLayout parent_scale = (LinearLayout)convertView.findViewById(R.id.parent_scale);
+		
+	    LayoutInflater scale = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		
+	   
+	    for(int i=0;i<4;i++)
+	    	{
+	    		final RelativeLayout child = (RelativeLayout)scale.inflate(R.layout.scale, null);
+	    		
+
+				LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(
+                        LayoutParams.MATCH_PARENT,
+                        LayoutParams.MATCH_PARENT, 1.0f);
+	    		
+	    		param.gravity = Gravity.TOP | Gravity.END |Gravity.RIGHT;
+	    		
+	    		child.setLayoutParams(param);
+	    		
+			    TextView point = (TextView)child.findViewById(R.id.txt_scale);
+			    point.setText(String.valueOf(i+1));
+			    
+			    if(i==0)
+			    	 parent_scale.addView(child, 1);
+			    else
+			    	 parent_scale.addView(child, parent_scale.getChildCount());
+	    		
+			   
+	    	}
+		
+		SeekBar seek_point = (SeekBar)convertView.findViewById(R.id.seekBar);
+		
+		TextView display_point = (TextView)convertView.findViewById(R.id.display_point);
+		display_point.setText("point");
+		 
+	    TextView attribute_name = (TextView)convertView.findViewById(R.id.attribute_name);
+		attribute_name.setText("child attribute "+String.valueOf(childPosition+1));
+		
+		
+		return convertView;
 	}
 
 	@Override
 	public int getChildrenCount(int groupPosition) {
 		// TODO Auto-generated method stub
-		return 0;
+		return 2;
 	}
 
 	@Override
@@ -52,7 +98,7 @@ public class Adapter_attribute extends BaseExpandableListAdapter{
 	@Override
 	public int getGroupCount() {
 		// TODO Auto-generated method stub
-		return 0;
+		return 2;
 	}
 
 	@Override
@@ -65,9 +111,11 @@ public class Adapter_attribute extends BaseExpandableListAdapter{
 	public View getGroupView(int groupPosition, boolean isExpanded,
 			View convertView, ViewGroup parent) {
 		 LayoutInflater inflater =  (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		    convertView = inflater.inflate(R.layout.item_attribute, null);
+		 convertView = inflater.inflate(R.layout.item_attribute, null);
 		  
-		return null;
+		 TextView scale_name = (TextView)convertView.findViewById(R.id.txt_attribute);
+		 scale_name.setText("Attribute "+String.valueOf(groupPosition+1));
+		 return convertView;
 	}
 
 	@Override

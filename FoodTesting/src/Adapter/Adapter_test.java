@@ -1,7 +1,6 @@
 package Adapter;
 
 import pie.app.foodtesting.R;
-import Attribute_inTest.Attribute;
 import android.content.Context;
 import android.content.Intent;
 import android.sax.StartElementListener;
@@ -12,10 +11,11 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+import attribute_inTest.Attribute;
 
 public class Adapter_test extends BaseAdapter{
 
-	View view;
 	Context context;
 	
 	public Adapter_test(Context context){
@@ -25,7 +25,7 @@ public class Adapter_test extends BaseAdapter{
 	@Override
 	public int getCount() {
 		// TODO Auto-generated method stub
-		return 0;
+		return 5;
 	}
 
 	@Override
@@ -47,6 +47,7 @@ public class Adapter_test extends BaseAdapter{
 		convertView = inflater.inflate(R.layout.block_test, null); 
 		
 		TextView test_id = (TextView)convertView.findViewById(R.id.test_id);
+		// set id
 		Button btn_test = (Button)convertView.findViewById(R.id.btn_test);
 		btn_test.setOnClickListener(new OnClickListener() {
 			
@@ -55,13 +56,13 @@ public class Adapter_test extends BaseAdapter{
 				// TODO Auto-generated method stub
 				Intent intent = new Intent(context,Attribute.class);
 				//intent.putExtra("test_id",test_id);
+
 				context.startActivity(intent);
-				
 			}
 		});
 		
 		
-		return null;
+		return convertView;
 	}
 
 }
