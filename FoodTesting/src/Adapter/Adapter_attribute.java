@@ -71,10 +71,29 @@ public class Adapter_attribute extends BaseExpandableListAdapter{
 			   
 	    	}
 		
-		SeekBar seek_point = (SeekBar)convertView.findViewById(R.id.seekBar);
+	    final TextView display_point = (TextView)convertView.findViewById(R.id.display_point);
+		display_point.setText("0.0");
+		SeekBar seek_point = (SeekBar)convertView.findViewById(R.id.seekBar);		
+		seek_point.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+		        public void onProgressChanged(SeekBar seekBar,int progress, boolean fromUser){
+		            //Do something here with new value
+		        	double point = (double)progress;
+		        	display_point.setText(String.valueOf(point/25));
+		        	
+		        }
+
+				public void onStartTrackingTouch(SeekBar arg0) {
+					// TODO Auto-generated method stub
+					
+				}
+
+				public void onStopTrackingTouch(SeekBar seekBar) {
+					// TODO Auto-generated method stub
+					
+				}
+		    });
 		
-		TextView display_point = (TextView)convertView.findViewById(R.id.display_point);
-		display_point.setText("point");
+		
 		 
 	    TextView attribute_name = (TextView)convertView.findViewById(R.id.attribute_name);
 		attribute_name.setText("child attribute "+String.valueOf(childPosition+1));
