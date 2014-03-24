@@ -1,5 +1,6 @@
 package pie.app.foodtesting;
 
+import database.ProductTable;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,6 +19,11 @@ public class Login extends Activity{
 		setContentView(R.layout.login);
 		initial();
 		set_button();
+		
+		
+		//Make Table in first open
+		ProductTable MakeTable = new ProductTable(this);
+		
 	}
 
 	private void set_button() {

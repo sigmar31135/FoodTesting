@@ -12,7 +12,7 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-import attribute_inTest.Attribute;
+import Attribute_inTest.Attribute;
 
 public class Adapter_test extends BaseAdapter{
 
