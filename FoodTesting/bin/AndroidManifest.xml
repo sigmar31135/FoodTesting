@@ -15,18 +15,18 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
-        <activity
-            android:name="pie.app.foodtesting.MainActivity"
-            android:label="@string/app_name" 
-            android:screenOrientation="landscape">
-            <intent-filter>
+        <activity android:name="Login" android:screenOrientation="landscape"><intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 	
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            </intent-filter></activity><activity
+            android:name="pie.app.foodtesting.MainActivity"
+            android:label="@string/app_name" 
+            android:screenOrientation="landscape">
         </activity>
         <activity android:name="attribute_inTest.Attribute" android:screenOrientation="landscape"></activity>
         <activity android:name="attribute_inTest.Result" android:screenOrientation="landscape"></activity>
+        
       
     </application>
 
