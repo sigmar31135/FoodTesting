@@ -8,6 +8,7 @@
         android:id="@+id/txt_attribute"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
+        android:layout_margin="5dp"
         android:text="TextView" />
 
 </LinearLayout>

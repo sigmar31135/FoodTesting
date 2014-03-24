@@ -32,27 +32,7 @@ public class MainActivity extends Activity {
 		gridView = (GridView)findViewById(R.id.gridView);
 	}
 
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// TODO Auto-generated method stub
-		switch (item.getItemId()) {
-        case R.id.MainActivity:
-            startActivity(new Intent(this,MainActivity.class));
-            return true;
-        case R.id.ResultActivity:
-            startActivity(new Intent(this,ResultActivity.class));
-            return true;
-        case R.id.WaitingActivity:
-            startActivity(new Intent(this,WaitingActivity.class));
-            return true;
-        case R.id.WorkActivity:
-            startActivity(new Intent(this,WorkActivity.class));
-            return true;
-        default:
-            return super.onOptionsItemSelected(item);
-    }
-		
-	}
+
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {

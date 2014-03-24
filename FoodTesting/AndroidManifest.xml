@@ -25,9 +25,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="pie.app.foodtesting.ResultActivity" android:screenOrientation="landscape"></activity>
-        <activity android:name="pie.app.foodtesting.WaitingActivity" android:screenOrientation="landscape"></activity>
-        <activity android:name="pie.app.foodtesting.WorkActivity" android:screenOrientation="landscape"></activity>
         <activity android:name="attribute_inTest.Attribute" android:screenOrientation="landscape"></activity>
         <activity android:name="attribute_inTest.Result" android:screenOrientation="landscape"></activity>
       
