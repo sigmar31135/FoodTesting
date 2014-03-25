@@ -39,11 +39,12 @@ public class Adapter_attribute extends BaseExpandableListAdapter{
 	public View getChildView(int groupPosition, int childPosition,
 			boolean isLastChild, View convertView, ViewGroup parent) {
 		
+		
+		if(convertView==null){
 		LayoutInflater inflater =  (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 	    convertView = inflater.inflate(R.layout.item_seekbar, null);
 	    
-	    LinearLayout parent_scale = (LinearLayout)convertView.findViewById(R.id.parent_scale);
-		
+	    LinearLayout parent_scale = (LinearLayout)convertView.findViewById(R.id.parent_scale);	
 	    LayoutInflater scale = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		
 	   
@@ -98,7 +99,7 @@ public class Adapter_attribute extends BaseExpandableListAdapter{
 	    TextView attribute_name = (TextView)convertView.findViewById(R.id.attribute_name);
 		attribute_name.setText("child attribute "+String.valueOf(childPosition+1));
 		
-		
+		}
 		return convertView;
 	}
 
@@ -129,11 +130,15 @@ public class Adapter_attribute extends BaseExpandableListAdapter{
 	@Override
 	public View getGroupView(int groupPosition, boolean isExpanded,
 			View convertView, ViewGroup parent) {
-		 LayoutInflater inflater =  (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		 
+		if(convertView == null){
+		LayoutInflater inflater =  (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		 convertView = inflater.inflate(R.layout.item_attribute, null);
 		  
 		 TextView scale_name = (TextView)convertView.findViewById(R.id.txt_attribute);
 		 scale_name.setText("Attribute "+String.valueOf(groupPosition+1));
+		}
+		
 		 return convertView;
 	}
 
