@@ -7,5 +7,7 @@
     <string name="waiting_activity">WaitingActivity</string>
     <string name="work_activity">WorkActivity</string>
     <string name="result_activity">ResultActivity</string>
+    <string name="refesh">REFESH</string>
+    <string name="sign_out">SIGN OUT</string>
 
 </resources>

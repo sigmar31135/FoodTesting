@@ -34,6 +34,10 @@ public class Login extends Activity{
 		//Make Table in first open
 		ProductTable MakeTable = new ProductTable(this);
 		
+		
+		edtUsername.setText("sigmar");
+		edtPassword.setText("gggggggg");
+		
 	}
 
 	private void set_button() {
@@ -63,6 +67,10 @@ public class Login extends Activity{
 							if(passValue.equals("error"))
 								Toast.makeText(Login.this, "Invalid username or password.", Toast.LENGTH_SHORT).show();
 							else{
+								
+								edtUsername.setText("");
+								edtPassword.setText("");
+								
 								Intent intent = new Intent(Login.this,MainActivity.class);
 								intent.putExtra(MainDatabase.UserTableColUserId, passValue);
 								startActivity(intent);

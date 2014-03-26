@@ -14,6 +14,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import attribute_inTest.Attribute;
@@ -58,9 +59,26 @@ public class Adapter_test extends BaseAdapter{
 		convertView = inflater.inflate(R.layout.block_test, null); 
 		final int index = position;
 		TextView test_id = (TextView)convertView.findViewById(R.id.test_id);
-		test_id.setText(TestId.get(index)[0]);
+		test_id.setText("Test ID : " + TestId.get(index)[0]);
 		// set id
 		Button btn_test = (Button)convertView.findViewById(R.id.btn_test);
+		Log.d("GGGGGG",TestId.get(index)[0] +" : " +TestId.get(position)[1] );
+		if(TestId.get(position)[1].equals("0")){
+			btn_test.setText("TEST");
+			btn_test.setBackgroundResource(R.drawable.test_btn);
+		}else{
+			btn_test.setText("EDIT");
+			btn_test.setBackgroundResource(R.drawable.edit_btn);
+		}
+		
+		ImageView imgTest = (ImageView) convertView.findViewById(R.id.ImaegTestMainActivity);
+		
+		if(TestId.get(index)[0].equals("101")||TestId.get(index)[0].equals("102"))
+			imgTest.setImageResource(R.drawable.image101);
+		else
+			imgTest.setImageResource(R.drawable.image102);
+		
+		
 		btn_test.setOnClickListener(new OnClickListener() {
 			
 			@Override
