@@ -4,6 +4,7 @@ import pie.app.foodtesting.R;
 import android.annotation.SuppressLint;
 import android.app.ActionBar.LayoutParams;
 import android.content.Context;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,19 +41,21 @@ public class Adapter_attribute extends BaseExpandableListAdapter{
 			boolean isLastChild, View convertView, ViewGroup parent) {
 		
 		
-		if(convertView==null){
-		LayoutInflater inflater =  (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+	if(convertView==null){
+		final LayoutInflater inflater =  (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 	    convertView = inflater.inflate(R.layout.item_seekbar, null);
 	    
-	    LinearLayout parent_scale = (LinearLayout)convertView.findViewById(R.id.parent_scale);	
-	    LayoutInflater scale = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+	    final LinearLayout parent_scale = (LinearLayout)convertView.findViewById(R.id.parent_scale);	
+	    final LayoutInflater scale = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		  
+	    final TextView attribute_name = (TextView)convertView.findViewById(R.id.attribute_name);
+		attribute_name.setText("child attribute "+String.valueOf(childPosition+1));
+	
 		
-	   
 	    for(int i=0;i<4;i++)
 	    	{
+		    	
 	    		final RelativeLayout child = (RelativeLayout)scale.inflate(R.layout.scale, null);
-	    		
-
 				LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(
                         LayoutParams.MATCH_PARENT,
                         LayoutParams.MATCH_PARENT, 1.0f);
@@ -61,7 +64,7 @@ public class Adapter_attribute extends BaseExpandableListAdapter{
 	    		
 	    		child.setLayoutParams(param);
 	    		
-			    TextView point = (TextView)child.findViewById(R.id.txt_scale);
+			    final TextView point = (TextView)child.findViewById(R.id.txt_scale);
 			    point.setText(String.valueOf(i+1));
 			    
 			    if(i==0)
@@ -70,36 +73,33 @@ public class Adapter_attribute extends BaseExpandableListAdapter{
 			    	 parent_scale.addView(child, parent_scale.getChildCount());
 	    		
 			   
-	    	}
-		
-	    final TextView display_point = (TextView)convertView.findViewById(R.id.display_point);
+	    	}   
+	
+	 	final TextView display_point = (TextView)convertView.findViewById(R.id.display_point);
 		display_point.setText("0.0");
-		SeekBar seek_point = (SeekBar)convertView.findViewById(R.id.seekBar);		
+		final SeekBar seek_point = (SeekBar)convertView.findViewById(R.id.seekBar);		
 		seek_point.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-		        public void onProgressChanged(SeekBar seekBar,int progress, boolean fromUser){
-		            //Do something here with new value
-		        	double point = (double)progress;
-		        	display_point.setText(String.valueOf(point/25));
-		        	
-		        }
+	        public void onProgressChanged(SeekBar seekBar,int progress, boolean fromUser){
+	            //Do something here with new value
+	        	double point = (double)progress;
+	        	display_point.setText(String.valueOf(point/25));
+	        	
+	        }
 
-				public void onStartTrackingTouch(SeekBar arg0) {
-					// TODO Auto-generated method stub
-					
-				}
+			public void onStartTrackingTouch(SeekBar arg0) {
+				// TODO Auto-generated method stub
+				
+			}
 
-				public void onStopTrackingTouch(SeekBar seekBar) {
-					// TODO Auto-generated method stub
-					
-				}
-		    });
-		
-		
-		 
-	    TextView attribute_name = (TextView)convertView.findViewById(R.id.attribute_name);
-		attribute_name.setText("child attribute "+String.valueOf(childPosition+1));
-		
+			public void onStopTrackingTouch(SeekBar seekBar) {
+				// TODO Auto-generated method stub
+				
+			}
+	    });
+	
+		Log.d("11111111 222", "11111111111 : "+String.valueOf(childPosition));
 		}
+		Log.d("11111111", "111111111 : "+String.valueOf(childPosition));
 		return convertView;
 	}
 
