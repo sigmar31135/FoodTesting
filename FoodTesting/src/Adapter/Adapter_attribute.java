@@ -1,5 +1,7 @@
 package Adapter;
 
+import java.util.ArrayList;
+
 import pie.app.foodtesting.R;
 import android.annotation.SuppressLint;
 import android.app.ActionBar.LayoutParams;
@@ -10,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.ExpandableListView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
@@ -18,7 +21,7 @@ import android.widget.TextView;
 public class Adapter_attribute extends BaseExpandableListAdapter{
 	
 	Context context;
-	
+	ArrayList<String> child = new ArrayList<String>();
 	public Adapter_attribute(Context context){
 		this.context = context;
 	}
@@ -78,6 +81,10 @@ public class Adapter_attribute extends BaseExpandableListAdapter{
 	 	final TextView display_point = (TextView)convertView.findViewById(R.id.display_point);
 		display_point.setText("0.0");
 		final SeekBar seek_point = (SeekBar)convertView.findViewById(R.id.seekBar);		
+		
+		//seek_point.setProgress(75);
+		
+		
 		seek_point.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 	        public void onProgressChanged(SeekBar seekBar,int progress, boolean fromUser){
 	            //Do something here with new value
@@ -131,6 +138,8 @@ public class Adapter_attribute extends BaseExpandableListAdapter{
 	public View getGroupView(int groupPosition, boolean isExpanded,
 			View convertView, ViewGroup parent) {
 		 
+		
+		    
 		if(convertView == null){
 		LayoutInflater inflater =  (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		 convertView = inflater.inflate(R.layout.item_attribute, null);
@@ -151,7 +160,7 @@ public class Adapter_attribute extends BaseExpandableListAdapter{
 	@Override
 	public boolean isChildSelectable(int groupPosition, int childPosition) {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 }
