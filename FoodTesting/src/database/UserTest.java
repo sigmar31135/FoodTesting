@@ -19,17 +19,22 @@ public class UserTest {
 		ReadData = objMainDatabase.getReadableDatabase();
 	}
 	
-	public ArrayList<String> GetTestIdFormUserId(String user_id){
+	public ArrayList<String[]> GetTestIdFormUserId(String user_id){
 		
-		ArrayList<String> output = new ArrayList<String>(); 
-		Cursor objCursor = ReadData.query(MainDatabase.UserTestTableName, new String[]{MainDatabase.UserTestTableColTestId	}, MainDatabase.UserTestTableColUserId + " ='" + user_id +"'", null , MainDatabase.UserTestTableColTestId , null, null);
+		ArrayList<String[]> output = new ArrayList<String[]>();
+		String test_id,score;
+		Cursor objCursor = ReadData.query(MainDatabase.UserTestTableName, new String[]{MainDatabase.UserTestTableColTestId , "MAX(" + MainDatabase.UserTestTableColScore + ")" }, MainDatabase.UserTestTableColUserId + " ='" + user_id +"'", null , MainDatabase.UserTestTableColTestId , null, null);
 		objCursor.moveToFirst();
 		while(true){
-			output.add(objCursor.getString(objCursor.getColumnIndex(MainDatabase.UserTestTableColTestId)));
+			
+			test_id = objCursor.getString(objCursor.getColumnIndex(MainDatabase.UserTestTableColTestId));
+			score = objCursor.getString(1);
+			output.add(new String[]{test_id,score});
 			if(objCursor.isLast())
 				break;
 			objCursor.moveToNext();
 		}
+		
 		return output;
 	}
 	

@@ -118,7 +118,7 @@ public class MainDatabase extends SQLiteOpenHelper{
 		db.execSQL("INSERT INTO " + AttributeTableName + " (" + AttributeTableColAttributeId + ", " + AttributeTableColAttributeName + ", " + AttributeTableColAttributeDetail + ", " + AttributeTableColAttributeGroup + ") VALUES ('27','ความหนืด/Viscosity','ggnsogo','4');");
 		db.execSQL("INSERT INTO " + AttributeTableName + " (" + AttributeTableColAttributeId + ", " + AttributeTableColAttributeName + ", " + AttributeTableColAttributeDetail + ", " + AttributeTableColAttributeGroup + ") VALUES ('28','ความรู้สึกมัน','ggnsogo','4');");
 		
-		db.execSQL("CREATE TABLE " + UserTestTableName + " (" + UserTestTableColUserId + " TEXT," + UserTestTableColTestId + " TEXT," + UserTestTableColAttributeId+ " TEXT," + UserTestTableColScore + " FLOAT);");	
+		db.execSQL("CREATE TABLE " + UserTestTableName + " (" + UserTestTableColUserId + " TEXT," + UserTestTableColTestId + " TEXT," + UserTestTableColAttributeId+ " TEXT," + UserTestTableColScore + " FLOAT);");
 		db.execSQL("INSERT INTO " + UserTestTableName + " (" + UserTestTableColUserId + ", " + UserTestTableColTestId + ", " + UserTestTableColAttributeId+ ", " + UserTestTableColScore + ") VALUES('10','101','1',2);");	
 		db.execSQL("INSERT INTO " + UserTestTableName + " (" + UserTestTableColUserId + ", " + UserTestTableColTestId + ", " + UserTestTableColAttributeId+ ", " + UserTestTableColScore + ") VALUES('10','101','2',8);");		
 		db.execSQL("INSERT INTO " + UserTestTableName + " (" + UserTestTableColUserId + ", " + UserTestTableColTestId + ", " + UserTestTableColAttributeId+ ", " + UserTestTableColScore + ") VALUES('10','101','3',4.5);");		
@@ -126,7 +126,7 @@ public class MainDatabase extends SQLiteOpenHelper{
 		db.execSQL("INSERT INTO " + UserTestTableName + " (" + UserTestTableColUserId + ", " + UserTestTableColTestId + ", " + UserTestTableColAttributeId+ ", " + UserTestTableColScore + ") VALUES('10','101','5',3);");		
 		db.execSQL("INSERT INTO " + UserTestTableName + " (" + UserTestTableColUserId + ", " + UserTestTableColTestId + ", " + UserTestTableColAttributeId+ ", " + UserTestTableColScore + ") VALUES('10','101','6',2);");		
 		db.execSQL("INSERT INTO " + UserTestTableName + " (" + UserTestTableColUserId + ", " + UserTestTableColTestId + ", " + UserTestTableColAttributeId+ ", " + UserTestTableColScore + ") VALUES('10','101','7',2.5);");		
-		db.execSQL("INSERT INTO " + UserTestTableName + " (" + UserTestTableColUserId + ", " + UserTestTableColTestId + ", " + UserTestTableColAttributeId+ ", " + UserTestTableColScore + ") VALUES('10','101','8',1);");		
+		db.execSQL("INSERT INTO " + UserTestTableName + " (" + UserTestTableColUserId + ", " + UserTestTableColTestId + ", " + UserTestTableColAttributeId+ ", " + UserTestTableColScore + ") VALUES('10','101','8',1);");
 		db.execSQL("INSERT INTO " + UserTestTableName + " (" + UserTestTableColUserId + ", " + UserTestTableColTestId + ", " + UserTestTableColAttributeId+ ", " + UserTestTableColScore + ") VALUES('10','201','1',0);");		
 		db.execSQL("INSERT INTO " + UserTestTableName + " (" + UserTestTableColUserId + ", " + UserTestTableColTestId + ", " + UserTestTableColAttributeId+ ", " + UserTestTableColScore + ") VALUES('10','201','2',0);");		
 		db.execSQL("INSERT INTO " + UserTestTableName + " (" + UserTestTableColUserId + ", " + UserTestTableColTestId + ", " + UserTestTableColAttributeId+ ", " + UserTestTableColScore + ") VALUES('10','201','3',0);");		
@@ -142,7 +142,7 @@ public class MainDatabase extends SQLiteOpenHelper{
 		db.execSQL("INSERT INTO " + UserTestTableName + " (" + UserTestTableColUserId + ", " + UserTestTableColTestId + ", " + UserTestTableColAttributeId+ ", " + UserTestTableColScore + ") VALUES('10','201','25',0);");		
 		db.execSQL("INSERT INTO " + UserTestTableName + " (" + UserTestTableColUserId + ", " + UserTestTableColTestId + ", " + UserTestTableColAttributeId+ ", " + UserTestTableColScore + ") VALUES('10','201','26',0);");		
 		db.execSQL("INSERT INTO " + UserTestTableName + " (" + UserTestTableColUserId + ", " + UserTestTableColTestId + ", " + UserTestTableColAttributeId+ ", " + UserTestTableColScore + ") VALUES('10','201','27',0);");		
-		db.execSQL("INSERT INTO " + UserTestTableName + " (" + UserTestTableColUserId + ", " + UserTestTableColTestId + ", " + UserTestTableColAttributeId+ ", " + UserTestTableColScore + ") VALUES('10','101','28',0);");		
+		db.execSQL("INSERT INTO " + UserTestTableName + " (" + UserTestTableColUserId + ", " + UserTestTableColTestId + ", " + UserTestTableColAttributeId+ ", " + UserTestTableColScore + ") VALUES('10','101','28',0);");
 		db.execSQL("INSERT INTO " + UserTestTableName + " (" + UserTestTableColUserId + ", " + UserTestTableColTestId + ", " + UserTestTableColAttributeId+ ", " + UserTestTableColScore + ") VALUES('20','102','1',0);");		
 		db.execSQL("INSERT INTO " + UserTestTableName + " (" + UserTestTableColUserId + ", " + UserTestTableColTestId + ", " + UserTestTableColAttributeId+ ", " + UserTestTableColScore + ") VALUES('20','102','2',0);");		
 		db.execSQL("INSERT INTO " + UserTestTableName + " (" + UserTestTableColUserId + ", " + UserTestTableColTestId + ", " + UserTestTableColAttributeId+ ", " + UserTestTableColScore + ") VALUES('20','102','3',0);");		
