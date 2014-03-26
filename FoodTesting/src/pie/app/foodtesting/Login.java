@@ -1,7 +1,10 @@
 package pie.app.foodtesting;
 
+import java.util.ArrayList;
+
 import database.MainDatabase;
 import database.ProductTable;
+import database.UserTest;
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
