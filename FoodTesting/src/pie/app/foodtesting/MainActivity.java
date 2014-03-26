@@ -1,5 +1,7 @@
 package pie.app.foodtesting;
 
+import java.util.ArrayList;
+
 import database.MainDatabase;
 import database.UserTest;
 import Adapter.Adapter_test;
@@ -12,32 +14,30 @@ import android.view.MenuItem;
 import android.widget.GridView;
 
 public class MainActivity extends Activity {
-	Context context = this;
-	GridView gridView;
+	private Context context = this;
+	private GridView gridView;
+	private static ArrayList<String[]> TestId;
+	private static String user_id;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		
-		String user_id = "";
 		Bundle extras = getIntent().getExtras();
 		if (extras != null) {
 			user_id = extras.getString(MainDatabase.UserTableColUserId);
 		}
 		if(!user_id.isEmpty()){
-			new UserTest(MainActivity.this).GetTestIdFormUserId(user_id);
+			TestId = new UserTest(MainActivity.this).GetTestIdFormUserId(user_id);
+			initial();
+			set_test();
 		}
 		
-		
-		
-		initial();
-		set_test();
 	}
 	
 	private void set_test() {
 		// TODO Auto-generated method stub
-		Adapter_test adapter_test = new Adapter_test(context);
+		Adapter_test adapter_test = new Adapter_test(MainActivity.this, user_id, TestId);
 		gridView.setAdapter(adapter_test);
 	}
 
