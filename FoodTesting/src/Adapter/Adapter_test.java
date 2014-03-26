@@ -12,7 +12,7 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-import Attribute_inTest.Attribute;
+import attribute_inTest.Attribute;
 
 public class Adapter_test extends BaseAdapter{
 
@@ -58,6 +58,7 @@ public class Adapter_test extends BaseAdapter{
 				//intent.putExtra("test_id",test_id);
 
 				context.startActivity(intent);
+				//Toast.makeText(context, "sad", Toast.LENGTH_LONG).show();
 			}
 		});
 		

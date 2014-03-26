@@ -1,4 +1,4 @@
-package Attribute_inTest;
+package attribute_inTest;
 
 import pie.app.foodtesting.R;
 import Adapter.Adapter_attribute;
