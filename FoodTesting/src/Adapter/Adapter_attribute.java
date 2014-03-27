@@ -124,15 +124,7 @@ public class Adapter_attribute extends BaseExpandableListAdapter{
 			}
 	    });
 	
-		
-		
-	
 		return convertView;
-		/*
-		TextView textView = new TextView(context);
-
-		textView.setText(child_1[childPosition]);
-		return textView;*/
 	}
 
 	@Override

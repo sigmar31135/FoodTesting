@@ -12,6 +12,12 @@ public class Adapter_result extends BaseExpandableListAdapter{
 
 	Context context;
 	
+	String Attribute[] = {"ลักษณะปรากฏ","กลิ่น","กลิ่นรส","เนื้อสัมผัส"};
+	String child_1[] = {"สีครีม","ความมันวาว"};
+	String child_2[] = {"Dairy Product","หวาน","เปรี้ยว","Butyric acid","Fermented","Floral"};
+	String child_3[] = {"Brown","Fruity","Chemical","Citrus","วานิลา","Musty"};
+	String child_4[] = {"ความหนืด"};
+	int group[] = {2,6,5,1};
 	
 	public Adapter_result(Context context)
 	{
@@ -34,21 +40,31 @@ public class Adapter_result extends BaseExpandableListAdapter{
 	public View getChildView(int groupPosition, int childPosition,
 			boolean isLastChild, View convertView, ViewGroup parent) {
 	
+		if(convertView==null){
 			 LayoutInflater inflater =  (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 			 convertView = inflater.inflate(R.layout.child_result, null);
-			  
+		}
 			 TextView child_attribute_name = (TextView)convertView.findViewById(R.id.result_attribute_name);
-			 child_attribute_name.setText("Attribute "+String.valueOf(groupPosition+1));
+			 
+			 	if(group[groupPosition]==2)
+				 	child_attribute_name.setText(child_1[childPosition]);
+			    if(group[groupPosition]==6)
+			    	child_attribute_name.setText(child_2[childPosition]);
+			    if(group[groupPosition]==5)
+			    	child_attribute_name.setText(child_3[childPosition]);
+			    if(group[groupPosition]==1)
+			    	child_attribute_name.setText(child_4[childPosition]);
+			
 			 
 			 TextView point = (TextView)convertView.findViewById(R.id.result_attribute_point);
-			 point.setText("10/20");
+			 point.setText("12.5/15");
 			 return convertView;
 	}
 
 	@Override
 	public int getChildrenCount(int groupPosition) {
 		// TODO Auto-generated method stub
-		return 2;
+		return group[groupPosition];
 	}
 
 	@Override
@@ -60,7 +76,7 @@ public class Adapter_result extends BaseExpandableListAdapter{
 	@Override
 	public int getGroupCount() {
 		// TODO Auto-generated method stub
-		return 2;
+		return 4;
 	}
 
 	@Override
@@ -72,12 +88,13 @@ public class Adapter_result extends BaseExpandableListAdapter{
 	@Override
 	public View getGroupView(int groupPosition, boolean isExpanded,
 			View convertView, ViewGroup parent) {
-
+		if(convertView==null){
 			 LayoutInflater inflater =  (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 			 convertView = inflater.inflate(R.layout.item_attribute, null);
-			  
+		}
+			 
 			 TextView scale_name = (TextView)convertView.findViewById(R.id.txt_attribute);
-			 scale_name.setText("Attribute "+String.valueOf(groupPosition+1));
+			 scale_name.setText(Attribute[groupPosition]);
 			 return convertView;
 	}
 
