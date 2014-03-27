@@ -18,7 +18,7 @@ import android.widget.Toast;
 
 public class Login extends Activity{
 
-	private static Button SignIn,SignUp;
+	private static Button SignIn;
 	private static EditText edtUsername,edtPassword;
 	private static String username,password;
 	
@@ -43,13 +43,11 @@ public class Login extends Activity{
 	private void set_button() {
 		// TODO Auto-generated method stub
 		SignIn.setOnClickListener(listener);
-		SignUp.setOnClickListener(listener);
 	}
 
 	private void initial() {
 		// TODO Auto-generated method stub
 		SignIn = (Button)findViewById(R.id.btn_signin);
-		SignUp = (Button)findViewById(R.id.btn_signup);
 		edtUsername = (EditText) findViewById(R.id.login_username);
 		edtPassword = (EditText) findViewById(R.id.login_password);
 	}
@@ -68,22 +66,17 @@ public class Login extends Activity{
 							if(passValue.equals("error"))
 								Toast.makeText(Login.this, "Invalid username or password.", Toast.LENGTH_SHORT).show();
 							else{
-								
-								edtUsername.setText("");
-								edtPassword.setText("");
-								
 								Intent intent = new Intent(Login.this,MainActivity.class);
 								intent.putExtra(MainDatabase.UserTableColUserId, passValue);
 								startActivity(intent);
+								
+								edtUsername.setText("");
+								edtPassword.setText("");
 							}
 						}else{
 							Toast.makeText(getApplicationContext(),"Please insert username or password.",Toast.LENGTH_SHORT).show();
 						}
 				break;
-			case R.id.btn_signup:
-				Intent intent = new Intent(Login.this,MainActivity.class);
-				intent.putExtra(MainDatabase.UserTableColUserId, "test");
-				startActivity(intent);
 					
 			default:
 				break;
