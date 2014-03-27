@@ -1,12 +1,5 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
-
-    <item
-        android:id="@+id/MainActivity"
-        android:orderInCategory="100"
-        android:showAsAction="never"
-        android:title="@string/action_settings"/>
-    <item android:id="@+id/WaitingActivity" android:title="@string/waiting_activity"></item>
-    <item android:id="@+id/WorkActivity" android:title="@string/work_activity"></item>
-    <item android:id="@+id/ResultActivity" android:title="@string/result_activity"></item>
+    <item android:id="@+id/refesh" android:title="@string/refesh"></item>
+    <item android:id="@+id/sing_out" android:title="@string/sign_out"></item>
 
 </menu>

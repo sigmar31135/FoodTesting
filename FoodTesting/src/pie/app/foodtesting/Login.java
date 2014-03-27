@@ -1,7 +1,10 @@
 package pie.app.foodtesting;
 
+import java.util.ArrayList;
+
 import database.MainDatabase;
 import database.ProductTable;
+import database.UserTest;
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
@@ -30,6 +33,10 @@ public class Login extends Activity{
 		
 		//Make Table in first open
 		ProductTable MakeTable = new ProductTable(this);
+		
+		
+		edtUsername.setText("sigmar");
+		edtPassword.setText("gggggggg");
 		
 	}
 
@@ -61,6 +68,10 @@ public class Login extends Activity{
 							if(passValue.equals("error"))
 								Toast.makeText(Login.this, "Invalid username or password.", Toast.LENGTH_SHORT).show();
 							else{
+								
+								edtUsername.setText("");
+								edtPassword.setText("");
+								
 								Intent intent = new Intent(Login.this,MainActivity.class);
 								intent.putExtra(MainDatabase.UserTableColUserId, passValue);
 								startActivity(intent);
