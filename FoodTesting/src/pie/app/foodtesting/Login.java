@@ -36,6 +36,7 @@ public class Login extends Activity{
 	private void set_button() {
 		// TODO Auto-generated method stub
 		SignIn.setOnClickListener(listener);
+		SignUp.setOnClickListener(listener);
 	}
 
 	private void initial() {
@@ -68,7 +69,11 @@ public class Login extends Activity{
 							Toast.makeText(getApplicationContext(),"Please insert username or password.",Toast.LENGTH_SHORT).show();
 						}
 				break;
-
+			case R.id.btn_signup:
+				Intent intent = new Intent(Login.this,MainActivity.class);
+				intent.putExtra(MainDatabase.UserTableColUserId, "test");
+				startActivity(intent);
+					
 			default:
 				break;
 			}

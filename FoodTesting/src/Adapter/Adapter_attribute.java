@@ -1,7 +1,7 @@
 package Adapter;
 
 import java.util.ArrayList;
-
+import java.util.HashMap;
 import pie.app.foodtesting.R;
 import android.annotation.SuppressLint;
 import android.app.ActionBar.LayoutParams;
@@ -20,10 +20,21 @@ import android.widget.TextView;
 
 public class Adapter_attribute extends BaseExpandableListAdapter{
 	
+	//ArrayList<String> Attribute = new ArrayList<String>();
+	//ArrayList<HashMap<String,String>> Child = new ArrayList<HashMap<String,String>>();
+	
+	String Attribute[] = {"ลักษณะปรากฏ","กลิ่น","กลิ่นรส","เนื้อสัมผัส"};
+	String child_1[] = {"สีครีม","ความมันวาว"};
+	String child_2[] = {"Dairy Product","หวาน","เปรี้ยว","Butyric acid","Fermented","Floral"};
+	String child_3[] = {"Brown","Fruity","Chemical","Citrus","วานิลา","Musty"};
+	String child_4[] = {"ความหนืด"};
+	int group[] = {2,6,5,1};
 	Context context;
+	
 	ArrayList<String> child = new ArrayList<String>();
 	public Adapter_attribute(Context context){
 		this.context = context;
+	
 	}
 	
 	@Override
@@ -45,38 +56,47 @@ public class Adapter_attribute extends BaseExpandableListAdapter{
 		
 		
 	if(convertView==null){
-		final LayoutInflater inflater =  (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		LayoutInflater inflater =  (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 	    convertView = inflater.inflate(R.layout.item_seekbar, null);
-	    
-	    final LinearLayout parent_scale = (LinearLayout)convertView.findViewById(R.id.parent_scale);	
-	    final LayoutInflater scale = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		  
-	    final TextView attribute_name = (TextView)convertView.findViewById(R.id.attribute_name);
-		attribute_name.setText("child attribute "+String.valueOf(childPosition+1));
-	
+	    LinearLayout parent_scale = (LinearLayout)convertView.findViewById(R.id.parent_scale);	
+	    LayoutInflater scale = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		
-	    for(int i=0;i<4;i++)
-	    	{
-		    	
-	    		final RelativeLayout child = (RelativeLayout)scale.inflate(R.layout.scale, null);
-				LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(
-                        LayoutParams.MATCH_PARENT,
-                        LayoutParams.MATCH_PARENT, 1.0f);
-	    		
-	    		param.gravity = Gravity.TOP | Gravity.END |Gravity.RIGHT;
-	    		
-	    		child.setLayoutParams(param);
-	    		
-			    final TextView point = (TextView)child.findViewById(R.id.txt_scale);
-			    point.setText(String.valueOf(i+1));
-			    
-			    if(i==0)
-			    	 parent_scale.addView(child, 1);
-			    else
-			    	 parent_scale.addView(child, parent_scale.getChildCount());
-	    		
-			   
-	    	}   
+	    for(int i=0;i<5;i++)
+    	{
+	    	
+    		final RelativeLayout child = (RelativeLayout)scale.inflate(R.layout.scale, null);
+			LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(
+                    LayoutParams.MATCH_PARENT,
+                    LayoutParams.MATCH_PARENT, 1.0f);		
+    		param.gravity = Gravity.TOP | Gravity.END |Gravity.RIGHT;
+    		
+    		child.setLayoutParams(param);
+    		
+		    TextView point = (TextView)child.findViewById(R.id.txt_scale);
+		    point.setText(String.valueOf(i+1));
+		    
+		    if(i==0)
+		    	 parent_scale.addView(child, 1);
+		    else
+		    	 parent_scale.addView(child, parent_scale.getChildCount());		   
+    	}   
+	}  
+	      
+	    final TextView attribute_name = (TextView)convertView.findViewById(R.id.attribute_name);
+		
+
+	    Log.d("111111", "111111 : "+String.valueOf(groupPosition)+" : "+String.valueOf(childPosition));
+	    
+	    if(group[groupPosition]==2)
+	    	attribute_name.setText(child_1[childPosition]);
+	    if(group[groupPosition]==6)
+	    	attribute_name.setText(child_2[childPosition]);
+	    if(group[groupPosition]==5)
+	    	attribute_name.setText(child_3[childPosition]);
+	    if(group[groupPosition]==1)
+	    	attribute_name.setText(child_4[childPosition]);
+		
+	    
 	
 	 	final TextView display_point = (TextView)convertView.findViewById(R.id.display_point);
 		display_point.setText("0.0");
@@ -104,16 +124,21 @@ public class Adapter_attribute extends BaseExpandableListAdapter{
 			}
 	    });
 	
-		Log.d("11111111 222", "11111111111 : "+String.valueOf(childPosition));
-		}
-		Log.d("11111111", "111111111 : "+String.valueOf(childPosition));
+		
+		
+	
 		return convertView;
+		/*
+		TextView textView = new TextView(context);
+
+		textView.setText(child_1[childPosition]);
+		return textView;*/
 	}
 
 	@Override
 	public int getChildrenCount(int groupPosition) {
 		// TODO Auto-generated method stub
-		return 2;
+		return group[groupPosition];
 	}
 
 	@Override
@@ -125,30 +150,32 @@ public class Adapter_attribute extends BaseExpandableListAdapter{
 	@Override
 	public int getGroupCount() {
 		// TODO Auto-generated method stub
-		return 2;
+		return 4;
 	}
 
 	@Override
 	public long getGroupId(int groupPosition) {
 		// TODO Auto-generated method stub
-		return 0;
+		return groupPosition;
 	}
 
 	@Override
 	public View getGroupView(int groupPosition, boolean isExpanded,
-			View convertView, ViewGroup parent) {
-		 
+			View convertView2, ViewGroup parent) {
+		if(convertView2 == null){
+			 LayoutInflater inflater =  (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+			 convertView2 = inflater.inflate(R.layout.item_attribute, null);
+		}  
+			 TextView scale_name = (TextView)convertView2.findViewById(R.id.txt_attribute);
+			 scale_name.setText(Attribute[groupPosition]);
 		
-		    
-		if(convertView == null){
-		LayoutInflater inflater =  (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		 convertView = inflater.inflate(R.layout.item_attribute, null);
-		  
-		 TextView scale_name = (TextView)convertView.findViewById(R.id.txt_attribute);
-		 scale_name.setText("Attribute "+String.valueOf(groupPosition+1));
-		}
 		
-		 return convertView;
+		 return convertView2;
+		/*
+		TextView textView = new TextView(context);
+
+		textView.setText(Attribute[groupPosition]);
+		return textView;*/
 	}
 
 	@Override
