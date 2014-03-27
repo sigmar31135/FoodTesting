@@ -109,7 +109,7 @@ public class Adapter_attribute extends BaseExpandableListAdapter{
 	        public void onProgressChanged(SeekBar seekBar,int progress, boolean fromUser){
 	            //Do something here with new value
 	        	double point = (double)progress;
-	        	point = point/25;
+	        	point = point*15/100;
 	        	String show_point = String.valueOf(point);
 	        	show_point = show_point.substring(0,3);
 	        	display_point.setText(show_point);

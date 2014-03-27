@@ -57,4 +57,10 @@ public class Attribute extends Activity{
 		done = (Button)findViewById(R.id.attribute_done);
 	}
 
+	@Override
+	protected void onStop() {
+		// TODO Auto-generated method stub
+		super.onStop();
+		finish();
+	}
 }
