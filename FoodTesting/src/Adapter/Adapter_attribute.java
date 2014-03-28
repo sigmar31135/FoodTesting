@@ -24,11 +24,11 @@ public class Adapter_attribute extends BaseExpandableListAdapter{
 	//ArrayList<String> Attribute = new ArrayList<String>();
 	//ArrayList<HashMap<String,String>> Child = new ArrayList<HashMap<String,String>>();
 	
-	String Attribute[] = {"≈—°…≥–ª√“°Ø","°≈‘Ëπ","°≈‘Ëπ√ ","‡π◊ÈÕ —¡º— "};
-	String child_1[] = {" ’§√’¡","§«“¡¡—π«“«"};
-	String child_2[] = {"Dairy Product","À«“π","‡ª√’È¬«","Butyric acid","Fermented","Floral"};
-	String child_3[] = {"Brown","Fruity","Chemical","Citrus","«“π‘≈“","Musty"};
-	String child_4[] = {"§«“¡Àπ◊¥"};
+	String Attribute[] = {"‡∏•‡∏±‡∏Å‡∏©‡∏ì‡∏∞‡∏õ‡∏£‡∏≤‡∏Å‡∏è","‡∏Å‡∏•‡∏¥‡πà‡∏ô","‡∏Å‡∏•‡∏¥‡πà‡∏ô‡∏£‡∏™","‡πÄ‡∏ô‡∏∑‡πâ‡∏≠‡∏™‡∏±‡∏°‡∏ú‡∏±‡∏™"};
+	String child_1[] = {"‡∏™‡∏µ‡∏Ñ‡∏£‡∏µ‡∏°","‡∏Ñ‡∏ß‡∏≤‡∏°‡∏°‡∏±‡∏ô‡∏ß‡∏≤‡∏ß"};
+	String child_2[] = {"Dairy Product","‡∏´‡∏ß‡∏≤‡∏ô","‡πÄ‡∏õ‡∏£‡∏µ‡πâ‡∏¢‡∏ß","Butyric acid","Fermented","Floral"};
+	String child_3[] = {"Brown","Fruity","Chemical","Citrus","‡∏ß‡∏≤‡∏ô‡∏¥‡∏•‡∏≤","Musty"};
+	String child_4[] = {"‡∏Ñ‡∏ß‡∏≤‡∏°‡∏´‡∏ô‡∏∑‡∏î"};
 	int group[] = {2,6,5,1};
 	Context context;
 	

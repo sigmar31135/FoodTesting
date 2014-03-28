@@ -18,14 +18,15 @@
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"
             android:src="@drawable/images" />
-</RelativeLayout>
+	</RelativeLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="500dp"
         android:layout_height="match_parent"
         android:layout_margin="10dp"
         android:layout_weight="0.3"
-        android:orientation="vertical" >
+        android:orientation="vertical"
+        android:layout_gravity="center_horizontal" >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -66,19 +67,13 @@
 
             <Button
                 android:id="@+id/btn_signin"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_weight="0.12"
                 android:text="Sign In" />
-
-            <Button
-                android:id="@+id/btn_signup"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.12"
-                android:text="Sign up" />
 
         </LinearLayout>
 
     </LinearLayout>
+    
 </LinearLayout>
