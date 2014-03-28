@@ -1,22 +1,33 @@
 package attribute_inTest;
 
+import java.security.acl.LastOwnerException;
+
 import pie.app.foodtesting.R;
 import Adapter.Adapter_attribute;
 import android.app.Activity;
 import android.app.ExpandableListActivity;
+import android.app.ActionBar.LayoutParams;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ExpandableListView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.SeekBar;
+import android.widget.TextView;
 
 public class Attribute extends Activity{
 	
 	ExpandableListView expandableListView;
 	Button done;
+	LinearLayout listview;
 	Context context = this;
 	
 	@Override
@@ -25,8 +36,77 @@ public class Attribute extends Activity{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.attribute);
 		initial();
-		set_expendableList();
+		//set_expendableList();
 		set_button();
+		set_listview();
+	}
+
+
+	private void set_listview() {
+		LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		
+		for(int i=0;i<2;i++){
+			final View view = inflater.inflate(R.layout.item_attribute, null);    
+			TextView name_Attribute = (TextView)view.findViewById(R.id.txt_attribute);
+			name_Attribute.setText("test");
+			
+			((ViewGroup) listview).addView(view,listview.getChildCount(), new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+		
+			for(int j=0;j<3;j++){
+				    final View view2 = inflater.inflate(R.layout.item_seekbar, null);
+					TextView name_child = (TextView)view2.findViewById(R.id.attribute_name);
+					name_child.setText("test "+ String.valueOf(j));
+					
+					((ViewGroup) listview).addView(view2, listview.getChildCount(), new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));				
+					LinearLayout parent_scale = (LinearLayout)view2.findViewById(R.id.parent_scale);	
+			 
+						for(int k=0;k<15;k++)
+				    	{	
+				    		final RelativeLayout child = (RelativeLayout)inflater.inflate(R.layout.scale, null);
+							LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(
+				                    LayoutParams.MATCH_PARENT,
+				                    LayoutParams.MATCH_PARENT, 1.0f);		
+				    		param.gravity = Gravity.TOP | Gravity.END |Gravity.RIGHT;
+				    		
+				    		child.setLayoutParams(param);
+				    		
+						    TextView point = (TextView)child.findViewById(R.id.txt_scale);
+						    point.setText(String.valueOf(k+1));
+						    
+						    if(k==0)
+						    	 parent_scale.addView(child, 1);
+						    else
+						    	 parent_scale.addView(child, parent_scale.getChildCount());		   
+				    	} 
+						
+					final TextView display_point = (TextView)view2.findViewById(R.id.display_point);	
+					SeekBar seekBar = (SeekBar)view2.findViewById(R.id.seekBar);
+					seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+				        public void onProgressChanged(SeekBar seekBar,int progress, boolean fromUser){
+				            //Do something here with new value
+				        	double point = (double)progress;
+				        	point = Math.round(point*15/10)/10.0;
+				        	
+				        	display_point.setText(String.valueOf(point));
+				        	
+				        	//sub_data.set_Attribute("");
+				        	//sub_data.set_point(childPosition, String.valueOf(point));
+				        	//data.set(groupPosition, sub_data);
+				        }
+
+						public void onStartTrackingTouch(SeekBar arg0) {
+							// TODO Auto-generated method stub
+							
+						}
+
+						public void onStopTrackingTouch(SeekBar seekBar) {
+							// TODO Auto-generated method stub
+							
+						}
+				    });
+	
+			}
+	    }
 	}
 
 
@@ -55,6 +135,7 @@ public class Attribute extends Activity{
 		// TODO Auto-generated method stub
 		expandableListView = (ExpandableListView)findViewById(R.id.expandableListView);
 		done = (Button)findViewById(R.id.attribute_done);
+		listview = (LinearLayout)findViewById(R.id.listview);
 	}
 
 	@Override

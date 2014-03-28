@@ -17,6 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import attribute_inTest.childInAttribute;
 
 public class Adapter_attribute extends BaseExpandableListAdapter{
 	
@@ -31,7 +32,10 @@ public class Adapter_attribute extends BaseExpandableListAdapter{
 	int group[] = {2,6,5,1};
 	Context context;
 	
-	ArrayList<String> child = new ArrayList<String>();
+	
+	ArrayList<childInAttribute> data = new ArrayList<childInAttribute>();
+	childInAttribute sub_data;
+	
 	public Adapter_attribute(Context context){
 		this.context = context;
 	
@@ -51,11 +55,13 @@ public class Adapter_attribute extends BaseExpandableListAdapter{
 
 	@SuppressLint("NewApi")
 	@Override
-	public View getChildView(int groupPosition, int childPosition,
+	public View getChildView(final int groupPosition, final int childPosition,
 			boolean isLastChild, View convertView, ViewGroup parent) {
 		
 		
 	if(convertView==null){
+		sub_data = new childInAttribute(10);
+		data.add(groupPosition,sub_data);
 		LayoutInflater inflater =  (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 	    convertView = inflater.inflate(R.layout.item_seekbar, null);
 	    LinearLayout parent_scale = (LinearLayout)convertView.findViewById(R.id.parent_scale);	
@@ -99,21 +105,27 @@ public class Adapter_attribute extends BaseExpandableListAdapter{
 	    
 	
 	 	final TextView display_point = (TextView)convertView.findViewById(R.id.display_point);
-		display_point.setText("0.0");
+		display_point.setText(data.get(groupPosition).get_point(childPosition));
 		final SeekBar seek_point = (SeekBar)convertView.findViewById(R.id.seekBar);		
 		
-		//seek_point.setProgress(75);
+		String point = data.get(groupPosition).get_point(childPosition);
+		Double display = Double.parseDouble(point);
+		display = display*100/15;
+		Integer show_point = display.intValue();
+		seek_point.setProgress(show_point);
 		
 		
 		seek_point.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 	        public void onProgressChanged(SeekBar seekBar,int progress, boolean fromUser){
 	            //Do something here with new value
 	        	double point = (double)progress;
-	        	point = point*15/100;
-	        	String show_point = String.valueOf(point);
-	        	show_point = show_point.substring(0,3);
-	        	display_point.setText(show_point);
+	        	point = Math.round(point*15/10)/10;
 	        	
+	        	display_point.setText(String.valueOf(point));
+	        	
+	        	//sub_data.set_Attribute("");
+	        	sub_data.set_point(childPosition, String.valueOf(point));
+	        	data.set(groupPosition, sub_data);
 	        }
 
 			public void onStartTrackingTouch(SeekBar arg0) {
