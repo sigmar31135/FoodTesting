@@ -61,6 +61,7 @@ public class Attribute extends Activity{
 				    final View view2 = inflater.inflate(R.layout.item_seekbar, null);
 					TextView name_child = (TextView)view2.findViewById(R.id.attribute_name);
 					name_child.setText("test "+ String.valueOf(j));
+					map.put("child_name_"+String.valueOf(j), "name child");
 					LinearLayout parent_scale = (LinearLayout)view2.findViewById(R.id.parent_scale);	
 			 
 						for(int k=0;k<15;k++)
@@ -124,12 +125,13 @@ public class Attribute extends Activity{
 				intent.putExtra("data", data);
 				startActivity(intent);
 				
-			/*	for(int i=0;i<data.size();i++)
+				/*for(int i=0;i<data.size();i++)
 				{
 					Log.d("item ", "item Attribute: "+data.get(i).get("Attribute"));
 					for(int j=0;j<data.get(i).size()-1;j++)
 					{	
 						Log.d("item ","item Child : "+data.get(i).get("child_"+j));
+						Toast.makeText(context, String.valueOf(data.get(i).size()), Toast.LENGTH_LONG).show();
 					}
 				}*/
 			}
