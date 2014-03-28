@@ -1,5 +1,8 @@
 package attribute_inTest;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import pie.app.foodtesting.R;
 import Adapter.Adapter_result;
 import android.app.Activity;
@@ -15,11 +18,15 @@ public class Result extends Activity{
 	ExpandableListView expandableListView_result;
 	Button done;
 	Context context = this;
+	ArrayList<HashMap<String, String>> data = new ArrayList<HashMap<String,String>>();
 		@Override
 		protected void onCreate(Bundle savedInstanceState) {
 			// TODO Auto-generated method stub
 			super.onCreate(savedInstanceState);
 			setContentView(R.layout.result);
+			Bundle bundle = getIntent().getExtras();
+			String text = bundle.getString("Message");
+			
 			initial();
 			set_expendablelist();
 			set_button();

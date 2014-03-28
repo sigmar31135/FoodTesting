@@ -23,6 +23,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Attribute extends Activity{
 	
@@ -30,8 +31,6 @@ public class Attribute extends Activity{
 	Button done;
 	LinearLayout listview;
 	Context context = this;
-	
-	//ArrayList<childInAttribute> data = new ArrayList<childInAttribute>();
 	ArrayList<HashMap<String, String>> data = new ArrayList<HashMap<String,String>>();
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -92,15 +91,9 @@ public class Attribute extends Activity{
 				        public void onProgressChanged(SeekBar seekBar,int progress, boolean fromUser){
 				            //Do something here with new value
 				        	double point = (double)progress;
-				        	point = Math.round(point*15/10)/10.0;
-				        	
-				        	display_point.setText(String.valueOf(point));
-				        	
+				        	point = Math.round(point*15/10)/10.0;		        	
+				        	display_point.setText(String.valueOf(point));	        	
 				        	map.put("child_"+String.valueOf(index), String.valueOf(point));
-				        	
-				        	//sub_data.set_Attribute("");
-				        	//sub_data.set_point(childPosition, String.valueOf(point));
-				        	//data.set(groupPosition, sub_data);
 				        }
 
 						public void onStartTrackingTouch(SeekBar arg0) {
@@ -114,9 +107,9 @@ public class Attribute extends Activity{
 				    });
 					((ViewGroup) listview).addView(view2, listview.getChildCount(), new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));				
 					
-					data.add(map);
 			}
-	    }
+			data.add(map);
+		}
 	}
 
 
@@ -128,7 +121,17 @@ public class Attribute extends Activity{
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				Intent intent = new Intent(Attribute.this,Result.class);
+				intent.putExtra("data", data);
 				startActivity(intent);
+				
+				for(int i=0;i<data.size();i++)
+				{
+					Log.d("item ", "item Attribute: "+data.get(i).get("Attribute"));
+					for(int j=0;j<data.get(i).size()-1;j++)
+					{	
+						Log.d("item ","item Child : "+data.get(i).get("child_"+j));
+					}
+				}
 			}
 		});
 	}
