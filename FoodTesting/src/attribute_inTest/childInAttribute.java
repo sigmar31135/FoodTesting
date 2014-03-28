@@ -6,19 +6,15 @@ public class childInAttribute {
 	
 	ArrayList<String> child_point = new ArrayList<String>();
 	String Attribute_name;
-	public childInAttribute(int n) {
-		for(int i=0;i<n;i++)
-		{
-			child_point.add(i, "0.0");
-		}
+	public childInAttribute() {
 	}
 	
 	public void set_point(int n,String point){
 		child_point.set(n, point);
 	}
 	
-	public void set_Attribute(String Attribute){
-		this.Attribute_name = Attribute;
+	public void set_Attribute(String Attribute_name){
+		this.Attribute_name = Attribute_name;
 	}
 	
 	public String get_point(int n)

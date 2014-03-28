@@ -2,8 +2,9 @@ package attribute_inTest;
 
 import java.security.acl.LastOwnerException;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import pie.app.foodtesting.R;
-import Adapter.Adapter_attribute;
 import android.app.Activity;
 import android.app.ExpandableListActivity;
 import android.app.ActionBar.LayoutParams;
@@ -30,6 +31,8 @@ public class Attribute extends Activity{
 	LinearLayout listview;
 	Context context = this;
 	
+	//ArrayList<childInAttribute> data = new ArrayList<childInAttribute>();
+	ArrayList<HashMap<String, String>> data = new ArrayList<HashMap<String,String>>();
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -46,6 +49,9 @@ public class Attribute extends Activity{
 		LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		
 		for(int i=0;i<2;i++){
+			final HashMap<String, String> map = new HashMap<String, String>();
+			map.put("Attribute_name", "name_attribute");
+			
 			final View view = inflater.inflate(R.layout.item_attribute, null);    
 			TextView name_Attribute = (TextView)view.findViewById(R.id.txt_attribute);
 			name_Attribute.setText("test");
@@ -56,8 +62,6 @@ public class Attribute extends Activity{
 				    final View view2 = inflater.inflate(R.layout.item_seekbar, null);
 					TextView name_child = (TextView)view2.findViewById(R.id.attribute_name);
 					name_child.setText("test "+ String.valueOf(j));
-					
-					((ViewGroup) listview).addView(view2, listview.getChildCount(), new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));				
 					LinearLayout parent_scale = (LinearLayout)view2.findViewById(R.id.parent_scale);	
 			 
 						for(int k=0;k<15;k++)
@@ -80,6 +84,9 @@ public class Attribute extends Activity{
 				    	} 
 						
 					final TextView display_point = (TextView)view2.findViewById(R.id.display_point);	
+					
+					final int index = j;
+				
 					SeekBar seekBar = (SeekBar)view2.findViewById(R.id.seekBar);
 					seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 				        public void onProgressChanged(SeekBar seekBar,int progress, boolean fromUser){
@@ -88,6 +95,8 @@ public class Attribute extends Activity{
 				        	point = Math.round(point*15/10)/10.0;
 				        	
 				        	display_point.setText(String.valueOf(point));
+				        	
+				        	map.put("child_"+String.valueOf(index), String.valueOf(point));
 				        	
 				        	//sub_data.set_Attribute("");
 				        	//sub_data.set_point(childPosition, String.valueOf(point));
@@ -101,10 +110,11 @@ public class Attribute extends Activity{
 
 						public void onStopTrackingTouch(SeekBar seekBar) {
 							// TODO Auto-generated method stub
-							
 						}
 				    });
-	
+					((ViewGroup) listview).addView(view2, listview.getChildCount(), new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));				
+					
+					data.add(map);
 			}
 	    }
 	}
@@ -122,14 +132,6 @@ public class Attribute extends Activity{
 			}
 		});
 	}
-
-
-	private void set_expendableList() {
-		// TODO Auto-generated method stub
-		Adapter_attribute adapter_attribute = new Adapter_attribute(context);
-		expandableListView.setAdapter(adapter_attribute);
-	}
-
 
 	private void initial() {
 		// TODO Auto-generated method stub
