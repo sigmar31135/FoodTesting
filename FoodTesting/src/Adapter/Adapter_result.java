@@ -1,5 +1,8 @@
 package Adapter;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import pie.app.foodtesting.R;
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,7 +14,7 @@ import android.widget.TextView;
 public class Adapter_result extends BaseExpandableListAdapter{
 
 	Context context;
-	
+	ArrayList<HashMap<String, String>> data = new ArrayList<HashMap<String,String>>();
 	String Attribute[] = {"ลักษณะปรากฏ","กลิ่น","กลิ่นรส","เนื้อสัมผัส"};
 	String child_1[] = {"สีครีม","ความมันวาว"};
 	String child_2[] = {"Dairy Product","หวาน","เปรี้ยว","Butyric acid","Fermented","Floral"};
@@ -19,9 +22,10 @@ public class Adapter_result extends BaseExpandableListAdapter{
 	String child_4[] = {"ความหนืด"};
 	int group[] = {2,6,5,1};
 	
-	public Adapter_result(Context context)
+	public Adapter_result(Context context,ArrayList<HashMap<String, String>> data)
 	{
 		this.context = context;
+		this.data = data;
 	}
 	
 	@Override

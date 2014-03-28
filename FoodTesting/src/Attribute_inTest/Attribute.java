@@ -124,14 +124,14 @@ public class Attribute extends Activity{
 				intent.putExtra("data", data);
 				startActivity(intent);
 				
-				for(int i=0;i<data.size();i++)
+			/*	for(int i=0;i<data.size();i++)
 				{
 					Log.d("item ", "item Attribute: "+data.get(i).get("Attribute"));
 					for(int j=0;j<data.get(i).size()-1;j++)
 					{	
 						Log.d("item ","item Child : "+data.get(i).get("child_"+j));
 					}
-				}
+				}*/
 			}
 		});
 	}

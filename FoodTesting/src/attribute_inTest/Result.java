@@ -8,6 +8,7 @@ import Adapter.Adapter_result;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -25,8 +26,15 @@ public class Result extends Activity{
 			super.onCreate(savedInstanceState);
 			setContentView(R.layout.result);
 			Bundle bundle = getIntent().getExtras();
-			String text = bundle.getString("Message");
-			
+			data = (ArrayList<HashMap<String, String>>) bundle.getSerializable("data");
+			for(int i=0;i<data.size();i++)
+			{
+				Log.d("item ", "item Attribute: "+data.get(i).get("Attribute"));
+				for(int j=0;j<data.get(i).size()-1;j++)
+				{	
+					Log.d("item ","item Child : "+data.get(i).get("child_"+j));
+				}
+			}
 			initial();
 			set_expendablelist();
 			set_button();
@@ -47,7 +55,7 @@ public class Result extends Activity{
 
 		private void set_expendablelist() {
 			// TODO Auto-generated method stub
-			Adapter_result adapter_result = new Adapter_result(context);
+			Adapter_result adapter_result = new Adapter_result(context,data);
 			expandableListView_result.setAdapter(adapter_result);
 		}
 
