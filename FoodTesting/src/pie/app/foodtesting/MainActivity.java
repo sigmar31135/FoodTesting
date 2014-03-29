@@ -9,6 +9,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.GridView;
@@ -27,7 +28,10 @@ public class MainActivity extends Activity {
 		Bundle extras = getIntent().getExtras();
 		if (extras != null) {
 			user_id = extras.getString("user_id");
+			TestId = (ArrayList<String[]>)extras.get("TestId");
 		}
+		
+		Log.d("GGGGGG", TestId.get(0)[0]);
 		if(!user_id.isEmpty()){
 			
 			
@@ -40,8 +44,10 @@ public class MainActivity extends Activity {
 	
 	private void set_test() {
 		// TODO Auto-generated method stub
+		
 		Adapter_test adapter_test = new Adapter_test(MainActivity.this, user_id, TestId);
 		gridView.setAdapter(adapter_test);
+		
 	}
 
 	private void initial() {
