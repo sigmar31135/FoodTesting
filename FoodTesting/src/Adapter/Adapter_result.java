@@ -43,17 +43,17 @@ public class Adapter_result extends BaseExpandableListAdapter{
 			 convertView = inflater.inflate(R.layout.child_result, null);
 		}
 			 TextView child_attribute_name = (TextView)convertView.findViewById(R.id.result_attribute_name);
-			 child_attribute_name.setText(data.get(groupPosition).get("child_name_"+String.valueOf(childPosition)));
+			 child_attribute_name.setText(data.get(groupPosition).get("cname_"+String.valueOf(childPosition)));
 			
 			 TextView point = (TextView)convertView.findViewById(R.id.result_attribute_point);
-			 point.setText(data.get(groupPosition).get("child_"+String.valueOf(childPosition) + "/15"));
+			 point.setText(data.get(groupPosition).get("point_"+String.valueOf(childPosition))+"/15");
 			 return convertView;
 	}
 
 	@Override
 	public int getChildrenCount(int groupPosition) {
 		// TODO Auto-generated method stub
-		return (data.get(groupPosition).size()-1)/2;
+		return (data.get(groupPosition).size()-2)/3;
 	}
 
 	@Override
@@ -83,7 +83,7 @@ public class Adapter_result extends BaseExpandableListAdapter{
 		}
 			 
 			 TextView scale_name = (TextView)convertView.findViewById(R.id.txt_attribute);
-			 scale_name.setText(data.get(groupPosition).get("Attribute_name"));
+			 scale_name.setText(data.get(groupPosition).get("aname"));
 			 return convertView;
 	}
 

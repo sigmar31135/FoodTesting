@@ -40,7 +40,8 @@ public class Attribute extends Activity{
 	LinearLayout listview;
 	Context context = this;
 	
-	ArrayList<HashMap<String, String>> data,information = new ArrayList<HashMap<String,String>>();
+	ArrayList<HashMap<String, String>> data = new ArrayList<HashMap<String,String>>();
+	ArrayList<HashMap<String, String>> data_child,data_attribute = new ArrayList<HashMap<String,String>>();
 	String tid;
 	
 	@Override
@@ -50,67 +51,61 @@ public class Attribute extends Activity{
 		setContentView(R.layout.attribute);
 		
 		initial();
-		request_data();
+		get_Attribute();
 		set_listview();
-		
-		
-		//Log.d("66666666666666", "66666666666 : "+information.get(0).get("aid"));
 		set_button();
-		//Toast.makeText(context, String.valueOf(information.size()), Toast.LENGTH_LONG).show();
-	}
-
-
-	private void request_data() {
-		http_post post = new http_post(context);
-		String url = "http://food.tartecake.com/getatt.php";
+		}
+	
+	private ArrayList<HashMap<String, String>> get_child(String aid) {
+		
+		ArrayList<HashMap<String, String>> data_child = new ArrayList<HashMap<String,String>>();
+		
 		List<NameValuePair> params = new ArrayList<NameValuePair>();
-		params.add(new BasicNameValuePair("tid","15"));
-		information = post.get_data(url, params);
+		String url = "http://food.tartecake.com/countch.php?aid="+aid;
+		http_post post = new http_post(context);
+		
+		//params.add(new BasicNameValuePair("tid",aid));
+		data_child = post.get_child(url, params);
+		return data_child;
 	}
 	
-	private Integer count_child(int i) {
-		Integer count = 0;
-		List<NameValuePair> params = new ArrayList<NameValuePair>();
-		String url = "http://food.tartecake.com/countch.php";
-		http_post post = new http_post(context);
-		params.add(new BasicNameValuePair("tid",information.get(i).get("aid")));
-		Log.d("66666666666666", "66666666666 : "+information.get(i).get("aid"));
-		count = Integer.parseInt(post.request(url, params));
-		return count;
-	}
-	
-	private Integer count_Attribute() {
-		Integer count = 1;
+	private void get_Attribute() {
+		
 		List<NameValuePair> params = new ArrayList<NameValuePair>();
 		String url = "http://food.tartecake.com/countatt.php";
 		http_post post = new http_post(context);
+		
 		params.add(new BasicNameValuePair("tid","15"));
-		String test = post.request(url, params);	
-		count = Integer.parseInt(test.toString());	
-		Toast.makeText(context,params.get(0).getValue() , Toast.LENGTH_LONG).show();
-		return count;
+		data_attribute = post.get_attribute(url, params);	
+			
 	}
 
 
 	private void set_listview() {
 		LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		
-		for(int i=0;i<count_Attribute();i++){
-			final HashMap<String, String> map = new HashMap<String, String>();
-			map.put("Attribute_name", "name_attribute");
-			
+		for(int i=0;i<data_attribute.size();i++){
+			final HashMap<String, String> map = new HashMap<String, String>();				
 			final View view = inflater.inflate(R.layout.item_attribute, null);    
 			TextView name_Attribute = (TextView)view.findViewById(R.id.txt_attribute);
-			//name_Attribute.setText(information.get(i).get("aname"));
-			
+			name_Attribute.setText(data_attribute.get(i).get("aname"));
+			name_Attribute.setTextSize(30);
+			map.put("aname", data_attribute.get(i).get("aname"));
+			map.put("aid", data_attribute.get(i).get("aid"));
 			((ViewGroup) listview).addView(view,listview.getChildCount(), new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-		
-			for(int j=0;j<count_child(i);j++){
+			
+			ArrayList<HashMap<String, String>> data_child = new ArrayList<HashMap<String,String>>();
+			data_child = get_child(data_attribute.get(i).get("aid"));
+			
+			for(int j=0;j<data_child.size();j++){
 				
 				    final View view2 = inflater.inflate(R.layout.item_seekbar, null);
-					//TextView name_child = (TextView)view2.findViewById(R.id.attribute_name);
-					/*name_child.setText("test "+ String.valueOf(j));
-					map.put("child_name_"+String.valueOf(j), "name child");
+					TextView name_child = (TextView)view2.findViewById(R.id.attribute_name);
+					name_child.setText(data_child.get(j).get("cname"));
+					name_child.setTextSize(25);
+					map.put("cname_"+String.valueOf(j), data_child.get(j).get("cname"));
+					map.put("cid_"+String.valueOf(j), data_child.get(j).get("cid"));
+					
 					LinearLayout parent_scale = (LinearLayout)view2.findViewById(R.id.parent_scale);	
 			 
 						for(int k=0;k<15;k++)
@@ -125,6 +120,7 @@ public class Attribute extends Activity{
 				    		
 						    TextView point = (TextView)child.findViewById(R.id.txt_scale);
 						    point.setText(String.valueOf(k+1));
+						    point.setTextSize(18);
 						    
 						    if(k==0)
 						    	 parent_scale.addView(child, 1);
@@ -133,9 +129,9 @@ public class Attribute extends Activity{
 				    	} 
 						
 					final TextView display_point = (TextView)view2.findViewById(R.id.display_point);	
+					display_point.setText("0.0");
+					final int index = j;			
 					
-					final int index = j;
-				
 					SeekBar seekBar = (SeekBar)view2.findViewById(R.id.seekBar);
 					seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 				        public void onProgressChanged(SeekBar seekBar,int progress, boolean fromUser){
@@ -143,7 +139,7 @@ public class Attribute extends Activity{
 				        	double point = (double)progress;
 				        	point = Math.round(point*15/10)/10.0;		        	
 				        	display_point.setText(String.valueOf(point));	        	
-				        	map.put("child_"+String.valueOf(index), String.valueOf(point));
+				        	map.put("point_"+String.valueOf(index),String.valueOf(point));
 				        }
 
 						public void onStartTrackingTouch(SeekBar arg0) {
@@ -154,11 +150,11 @@ public class Attribute extends Activity{
 						public void onStopTrackingTouch(SeekBar seekBar) {
 							// TODO Auto-generated method stub
 						}
-				    });*/
-					((ViewGroup) listview).addView(view2, listview.getChildCount(), new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));				
-					
+				    });
+					((ViewGroup) listview).addView(view2, listview.getChildCount(), new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));	
 			}
-			//data.add(map);
+			Log.d("0000000000000", "0000000000 add : "+String.valueOf(map.size()) );
+			data.add(map);	
 		}
 	}
 
@@ -172,15 +168,18 @@ public class Attribute extends Activity{
 				Intent intent = new Intent(Attribute.this,Result.class);
 				intent.putExtra("data", data);
 				startActivity(intent);
-				
-				/*for(int i=0;i<data.size();i++)
+				/*
+				for(int i=0;i<data.size();i++)
 				{
-					Log.d("item ", "item Attribute: "+data.get(i).get("Attribute"));
-					for(int j=0;j<data.get(i).size()-1;j++)
-					{	
-						Log.d("item ","item Child : "+data.get(i).get("child_"+j));
-						Toast.makeText(context, String.valueOf(data.get(i).size()), Toast.LENGTH_LONG).show();
+					Log.d("item : "+String.valueOf(i), "item Attribute: "+data.get(i).get("aname"));
+					Log.d("item ","item child size : "+String.valueOf(data.get(i).size()));
+					for(int j=0;j<((data.get(i).size())-2)/3;j++)
+					{
+						
+						Log.d("item ","item Child : "+data.get(i).get("cname_"+String.valueOf(j)));
+						//Toast.makeText(context, String.valueOf(data.get(i).size()), Toast.LENGTH_LONG).show();
 					}
+					
 				}*/
 			}
 		});

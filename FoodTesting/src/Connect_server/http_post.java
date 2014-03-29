@@ -16,6 +16,7 @@ import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -68,21 +69,42 @@ public class http_post {
 			return MyArrList;	
 	    }
 	
-	 public Integer get_count(String url,List<NameValuePair> params)
+	 public ArrayList<HashMap<String, String>> get_attribute(String url,List<NameValuePair> params)
 	    {	
-		 	Integer count=0;
 			try {
 				JSONArray data = new JSONArray(request(url,params));		
 				HashMap<String, String> map;
 				for(int i = 0; i < data.length(); i++){
 	                JSONObject c = data.getJSONObject(i);
-	    			count = Integer.parseInt(c.getString("count"));	
-
+	                map = new HashMap<String, String>();
+	                map.put("aid", c.getString("aid"));
+	    			map.put("aname", c.getString("aname"));
+	    			MyArrList.add(map);
 	    		}
+				
 			} catch (JSONException e) {
 				Log.d("getJSON", "getJSON fail");
 			}
-			return count;	
+			return MyArrList;	
+	    }
+	 
+	 public ArrayList<HashMap<String, String>> get_child(String url,List<NameValuePair> params)
+	    {	
+			try {
+				JSONArray data = new JSONArray(request(url,params));		
+				HashMap<String, String> map;
+				for(int i = 0; i < data.length(); i++){
+	                JSONObject c = data.getJSONObject(i);
+	                map = new HashMap<String, String>();
+	                map.put("cid", c.getString("cid"));
+	    			map.put("cname", c.getString("cname"));
+	    			MyArrList.add(map);
+	    		}
+				
+			} catch (JSONException e) {
+				Log.d("getJSON", "getJSON fail");
+			}
+			return MyArrList;	
 	    }
 	
 	
@@ -95,6 +117,42 @@ public class http_post {
 		try {
 		
 			httpPost.setEntity(new UrlEncodedFormEntity(params));
+			HttpResponse response = client.execute(httpPost);
+			StatusLine statusLine = response.getStatusLine();
+			int statusCode = statusLine.getStatusCode();
+
+			if (statusCode == 200) { // Status OK
+				
+				
+				HttpEntity entity = response.getEntity();
+				InputStream content = entity.getContent();
+				BufferedReader reader = new BufferedReader(new InputStreamReader(content));
+				String line;
+			
+				while ((line = reader.readLine()) != null) {
+					str.append(line);
+				}
+				Log.d("111111111111111 : ", "11111111111111 : "  + str.toString().substring(68));
+				
+			}
+		}
+		 catch (ClientProtocolException e) {
+			Log.e("client","error ProtocolException");
+		} catch (IOException e) {
+			Log.e("client","error IOexception");
+		}
+		return str.toString().substring(68);
+	}
+	
+	public String send(String url, JSONArray params)
+	{
+		StringBuilder str = new StringBuilder();
+		HttpClient client = new DefaultHttpClient();
+		HttpPost httpPost = new HttpPost(url);
+		Log.d("client", "client 0");
+		try {
+			
+			httpPost.setEntity(new StringEntity(params.toString()));
 			HttpResponse response = client.execute(httpPost);
 			StatusLine statusLine = response.getStatusLine();
 			int statusCode = statusLine.getStatusCode();

@@ -29,6 +29,7 @@
         android:layout_marginRight="50dp"
         android:layout_alignParentBottom="true"
         android:layout_marginTop="10dp"
+        android:textSize="30dp"
         android:background="@drawable/button_action"
         android:text="Done" />
 
