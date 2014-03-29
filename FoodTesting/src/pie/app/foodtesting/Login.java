@@ -1,14 +1,17 @@
 package pie.app.foodtesting;
 
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
 import java.util.ArrayList;
 
-import database.MainDatabase;
-import database.ProductTable;
-import database.UserTest;
+import org.apache.http.client.HttpClient;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -29,11 +32,6 @@ public class Login extends Activity{
 		setContentView(R.layout.login);
 		initial();
 		set_button();
-		
-		
-		//Make Table in first open
-		ProductTable MakeTable = new ProductTable(this);
-		
 		
 		edtUsername.setText("sigmar");
 		edtPassword.setText("gggggggg");
@@ -62,12 +60,12 @@ public class Login extends Activity{
 						username = edtUsername.getText().toString().trim();
 						password  = edtPassword.getText().toString().trim();
 						if(!(username.isEmpty()||password.isEmpty())){
-							String passValue = CheckUser();
+							String passValue = "error";
 							if(passValue.equals("error"))
 								Toast.makeText(Login.this, "Invalid username or password.", Toast.LENGTH_SHORT).show();
 							else{
 								Intent intent = new Intent(Login.this,MainActivity.class);
-								intent.putExtra(MainDatabase.UserTableColUserId, passValue);
+								intent.putExtra("user_id", passValue);
 								startActivity(intent);
 								
 								edtUsername.setText("");
@@ -82,16 +80,41 @@ public class Login extends Activity{
 				break;
 			}
 		}
-
-		private String CheckUser() {
-			// TODO Auto-generated method stub
-			SQLiteDatabase objSQL = new MainDatabase(Login.this).getReadableDatabase();
-			Cursor Data = objSQL.query(MainDatabase.UserTableName, new String[]{MainDatabase.UserTableColUserId}, MainDatabase.UserTableColUser + " = '" + username + "' AND " + MainDatabase.UserTableColPassword + " ='"+ password + "'", null, null, null, null);
-			Data.moveToFirst();
-			if(Data.getCount()!=0){
-				return Data.getString(Data.getColumnIndex(MainDatabase.UserTableColUserId));
-			}
-			return "error";
-		}
 	};
+	
+	private class CheckUser extends AsyncTask<  Void, Void, String>{
+
+		@Override
+		protected String doInBackground(Void... params) {
+			// TODO Auto-generated method stub
+			
+			try {
+				 HttpURLConnection connectWeb = null;
+				 String Url = "http://food.tartecake.com/checklogin.php";
+				 connectWeb.setRequestMethod("GET");
+				 connectWeb.addRequestProperty("username", username);
+				 connectWeb.addRequestProperty("password", password);
+				 
+				 int resultServer = connectWeb.getResponseCode();
+				 if(resultServer == HttpURLConnection.HTTP_OK){
+					 InputStream objInpuStream = connectWeb.getInputStream();
+					 int read = 0;
+					 while (( read = objInpuStream.read()) != -1){
+						 
+						 
+						 
+					 }
+				 }
+				 
+				 }catch
+			
+			
+			
+			
+			return null;
+		}
+		
+	}
+	
+	
 }

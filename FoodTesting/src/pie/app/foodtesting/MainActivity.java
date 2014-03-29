@@ -2,8 +2,6 @@ package pie.app.foodtesting;
 
 import java.util.ArrayList;
 
-import database.MainDatabase;
-import database.UserTest;
 import Adapter.Adapter_test;
 import android.os.Bundle;
 import android.app.Activity;
@@ -28,10 +26,12 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 		Bundle extras = getIntent().getExtras();
 		if (extras != null) {
-			user_id = extras.getString(MainDatabase.UserTableColUserId);
+			user_id = extras.getString("user_id");
 		}
 		if(!user_id.isEmpty()){
-			TestId = new UserTest(MainActivity.this).GetTestIdFormUserId(user_id);
+			
+			
+			
 			initial();
 			set_test();
 		}

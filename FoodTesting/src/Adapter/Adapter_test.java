@@ -2,7 +2,6 @@ package Adapter;
 
 import java.util.ArrayList;
 
-import database.MainDatabase;
 import pie.app.foodtesting.R;
 import android.content.Context;
 import android.content.Intent;
