@@ -89,21 +89,6 @@ public class Login extends Activity {
 				password = edtPassword.getText().toString().trim();
 				if (!(username.isEmpty() || password.isEmpty())) {
 					new CheckUser().execute();
-					/*
-					if (user_id.equals("error"))
-						Toast.makeText(Login.this,
-								"Invalid username or password.",
-								Toast.LENGTH_SHORT).show();
-					else {
-						Intent intent = new Intent(Login.this,
-								MainActivity.class);
-						intent.putExtra("user_id", user_id);
-						intent.putExtra("test", test);
-						startActivity(intent);
-						edtUsername.setText("");
-						edtPassword.setText("");
-					}
-					*/
 				} else {
 					Toast.makeText(getApplicationContext(),
 							"Please insert username or password.",
@@ -134,7 +119,7 @@ public class Login extends Activity {
 			httpPost.setEntity(new UrlEncodedFormEntity(request, "UTF-8"));
 			*/
 			
-			String Gabumon = "";
+			String Gabumon = "error";
 			try {
 				HttpResponse response = client.execute(httpPost);
 				StatusLine statusLine = response.getStatusLine();
@@ -145,6 +130,7 @@ public class Login extends Activity {
 					BufferedReader reader = new BufferedReader(
 							new InputStreamReader(content));
 					String line;
+					Gabumon = "";
 					while ((line = reader.readLine()) != null) {
 						Gabumon += line;
 					}
@@ -164,9 +150,17 @@ public class Login extends Activity {
 			// TODO Auto-generated method stub
 			super.onPostExecute(result);
 			
-			if(result=="fail"){
+			Log.d("GGGGGG", result);
+			
+			if(result.equals("fail")){
 				Toast.makeText(Login.this,
 						"Invalid username or password.",
+						Toast.LENGTH_SHORT).show();
+				return ;
+			}
+			else if(result.equals("error")){
+				Toast.makeText(Login.this,
+						"Sorry, Have an internet's problem.",
 						Toast.LENGTH_SHORT).show();
 				return ;
 			}

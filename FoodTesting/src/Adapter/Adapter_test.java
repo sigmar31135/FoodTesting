@@ -84,12 +84,9 @@ public class Adapter_test extends BaseAdapter{
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				Intent intent = new Intent(context,Attribute.class);
-				//intent.putExtra(MainDatabase.UserTestTableColUserId, user_id);
-				//intent.putExtra(MainDatabase.UserTestTableColTestId, TestId.get(index)[0]);
-				//intent.putExtra("test_id",test_id);
-
+				intent.putExtra("user_id", user_id);
+				intent.putExtra("test_id", TestId.get(index)[0]);
 				context.startActivity(intent);
-				//Toast.makeText(context, "sad", Toast.LENGTH_LONG).show();
 			}
 		});
 		
