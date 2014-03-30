@@ -15,6 +15,7 @@ import Adapter.Adapter_result;
 import Connect_server.http_post;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -121,5 +122,16 @@ public class Result extends Activity{
 			expandableListView_result = (ExpandableListView)findViewById(R.id.result_expendableList);
 			done = (Button)findViewById(R.id.result_done);
 			
+		}
+		
+		@Override
+		public void onBackPressed() {
+			// TODO Auto-generated method stub
+			super.onBackPressed();
+			Intent intent = new Intent(Result.this,Attribute.class);
+			intent.putExtra("uid", uid);
+			intent.putExtra("tid", tid);
+			intent.putExtra("data", data);
+			startActivity(intent);
 		}
 }

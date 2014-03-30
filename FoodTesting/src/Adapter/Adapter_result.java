@@ -44,9 +44,11 @@ public class Adapter_result extends BaseExpandableListAdapter{
 		}
 			 TextView child_attribute_name = (TextView)convertView.findViewById(R.id.result_attribute_name);
 			 child_attribute_name.setText(data.get(groupPosition).get("cname_"+String.valueOf(childPosition)));
-			
+			 child_attribute_name.setTextSize(25);
+			 
 			 TextView point = (TextView)convertView.findViewById(R.id.result_attribute_point);
 			 point.setText(data.get(groupPosition).get("point_"+String.valueOf(childPosition))+"/15");
+			 point.setTextSize(25);
 			 return convertView;
 	}
 
@@ -84,6 +86,7 @@ public class Adapter_result extends BaseExpandableListAdapter{
 			 
 			 TextView scale_name = (TextView)convertView.findViewById(R.id.txt_attribute);
 			 scale_name.setText(data.get(groupPosition).get("aname"));
+			 scale_name.setTextSize(30);
 			 return convertView;
 	}
 
