@@ -2,49 +2,53 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="20dp">
+    android:background="@drawable/login_bg"
+    android:paddingBottom="30dp">
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center"
+        android:layout_centerInParent="true"
+        android:padding="10dp"
         android:background="@drawable/login_block">
         
         <ImageView 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/logo3"
+            android:src="@drawable/logo"
+            android:padding="30dp"
             android:layout_gravity="center_vertical"/>
 
         <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="60dp"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
           >
 
             <EditText
                 android:id="@+id/login_username"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="wrap_content"
               	android:paddingLeft="10dp"
               	android:textColor="@android:color/black"
+              	android:textSize="40sp"
                 android:hint="username"/>
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="60dp"
+            android:layout_height="wrap_content"
           >
 
             <EditText
                 android:id="@+id/login_password"
                 android:layout_width="match_parent"
-				android:paddingLeft="10dp"
-                android:layout_height="40dp"
+                android:layout_height="wrap_content"
                 android:hint="password"
-        
+              	android:textSize="40sp"
               	android:textColor="@android:color/black"
                 android:password="true"/>
 
@@ -59,7 +63,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="0.12"
-                android:text="Sign In" />
+                android:text="Sign In"
+                android:textSize="27dp"
+                android:textColor="#ffffff" 
+                android:background="@drawable/btn_login"/>
 
         </LinearLayout>
 

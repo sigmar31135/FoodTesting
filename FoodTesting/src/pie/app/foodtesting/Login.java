@@ -54,7 +54,7 @@ public class Login extends Activity {
 		edtPassword.setText("123456");
 		
 		
-		new setActionBar(getActionBar(), "YOUR WELLCOME");
+		getActionBar().hide();
 
 	}
 

@@ -34,21 +34,25 @@ public final class R {
         public static final int activity_vertical_margin=0x7f040001;
     }
     public static final class drawable {
-        public static final int button_action=0x7f020000;
-        public static final int edit_btn=0x7f020001;
-        public static final int ic_launcher=0x7f020002;
-        public static final int image101=0x7f020003;
-        public static final int image102=0x7f020004;
-        public static final int image_test=0x7f020005;
-        public static final int images=0x7f020006;
-        public static final int login_block=0x7f020007;
-        public static final int logo3=0x7f020008;
-        public static final int logout_button=0x7f020009;
-        public static final int refresh_button=0x7f02000a;
-        public static final int test_btn=0x7f02000b;
-        public static final int test_card=0x7f02000c;
-        public static final int topbar=0x7f02000d;
-        public static final int topbar_logo=0x7f02000e;
+        public static final int btn_login=0x7f020000;
+        public static final int button_action=0x7f020001;
+        public static final int edit_btn=0x7f020002;
+        public static final int ic_launcher=0x7f020003;
+        public static final int image101=0x7f020004;
+        public static final int image102=0x7f020005;
+        public static final int image_test=0x7f020006;
+        public static final int images=0x7f020007;
+        public static final int login_background=0x7f020008;
+        public static final int login_bg=0x7f020009;
+        public static final int login_block=0x7f02000a;
+        public static final int logo=0x7f02000b;
+        public static final int logo3=0x7f02000c;
+        public static final int logout_button=0x7f02000d;
+        public static final int refresh_button=0x7f02000e;
+        public static final int test_btn=0x7f02000f;
+        public static final int test_card=0x7f020010;
+        public static final int topbar=0x7f020011;
+        public static final int topbar_logo=0x7f020012;
     }
     public static final class id {
         public static final int ImaegTestMainActivity=0x7f090005;
