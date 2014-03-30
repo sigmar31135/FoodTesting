@@ -6,7 +6,7 @@
  
 <item android:state_pressed="false">
     <shape>
-        <solid android:color="@color/gree_blue"/>
+        <solid android:color="@color/block_test"/>
        
         <corners
             android:radius="5dp" />                          

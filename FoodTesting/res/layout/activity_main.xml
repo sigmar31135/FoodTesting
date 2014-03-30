@@ -2,17 +2,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-  
     tools:context=".MainActivity" 
     android:padding="20dp"
-    android:background="#FFCCFF">
+    android:background="@color/main_activity_bac">
 
     <GridView
         android:id="@+id/gridView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:numColumns="3" 
-        android:horizontalSpacing="15dp">
+        android:horizontalSpacing="15dp"
+        android:verticalSpacing="15dp">
     </GridView>
 
 </RelativeLayout>

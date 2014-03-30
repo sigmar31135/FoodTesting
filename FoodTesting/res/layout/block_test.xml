@@ -19,7 +19,7 @@
                 android:id="@+id/ImaegTestMainActivity"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:background="@drawable/image101"
+                android:background="@drawable/image_test"
                 android:scaleType="centerCrop"/>
             
         </LinearLayout>
@@ -38,12 +38,32 @@
                 android:text="TextView" 
                 android:textColor="#000066"
                 android:textSize="30dp"/>
+            
+            <TextView
+                android:id="@+id/test_attribute"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TextView" 
+                android:textColor="#000066"
+                android:textSize="26dp"/>
+            
+            <TextView
+                android:id="@+id/test_create"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TextView" 
+                android:textColor="#000066"
+                android:textSize="22dp"/>
+            
+            
 
             <Button
                 android:id="@+id/btn_test"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Button"
+                android:textColor="@color/main_activity_bac"
+                android:textSize="30dp"
                 android:layout_marginTop="24dp" />
 
         </LinearLayout>
