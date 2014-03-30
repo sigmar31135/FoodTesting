@@ -150,7 +150,6 @@ public class Login extends Activity {
 			// TODO Auto-generated method stub
 			super.onPostExecute(result);
 			
-			Log.d("GGGGGG", result);
 			
 			if(result.equals("fail")){
 				Toast.makeText(Login.this,
@@ -175,10 +174,15 @@ public class Login extends Activity {
 				user_id = data.getString("uid");
 				
 				for(int i=0;i<data2.length();i++){
-				
-					test.add(new String[]{data2.getJSONObject(i).getString("tid"), data2.getJSONObject(i).getString("work")});
+					if(!data2.getJSONObject(i).getString("work").equals(""))
+						test.add(new String[]{data2.getJSONObject(i).getString("tid"), data2.getJSONObject(i).getString("work")});
 				}
 				
+				if(test.size()==0){
+					Toast.makeText(Login.this, "Don't have any work you can do.", Toast.LENGTH_LONG).show();
+					return ;
+					
+				}
 				Intent intent = new Intent(Login.this,
 						MainActivity.class);
 				intent.putExtra("user_id", user_id);
@@ -190,7 +194,6 @@ public class Login extends Activity {
 				
 			} catch (JSONException e) {
 				e.printStackTrace();
-				Log.d("GGGGGG", "error:" + e.toString());
 
 			}
 		}

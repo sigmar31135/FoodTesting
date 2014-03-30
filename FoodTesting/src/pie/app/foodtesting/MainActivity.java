@@ -31,7 +31,6 @@ public class MainActivity extends Activity {
 			TestId = (ArrayList<String[]>)extras.get("TestId");
 		}
 		
-		Log.d("GGGGGG", TestId.get(0)[0]);
 		if(!user_id.isEmpty()){
 			
 			

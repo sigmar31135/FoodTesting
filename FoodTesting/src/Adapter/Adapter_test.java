@@ -29,8 +29,6 @@ public class Adapter_test extends BaseAdapter{
 		this.TestId = TestId;
 		this.user_id = user_id;
 		
-		Log.d("GGGGGG", String.valueOf(TestId.size()));
-		
 	}
 	
 	@Override
@@ -61,7 +59,6 @@ public class Adapter_test extends BaseAdapter{
 		test_id.setText("Test ID : " + TestId.get(index)[0]);
 		// set id
 		Button btn_test = (Button)convertView.findViewById(R.id.btn_test);
-		Log.d("GGGGGG",TestId.get(index)[0] +" : " +TestId.get(position)[1] );
 		if(TestId.get(position)[1].equals("0")){
 			btn_test.setText("TEST");
 			btn_test.setBackgroundResource(R.drawable.test_btn);
