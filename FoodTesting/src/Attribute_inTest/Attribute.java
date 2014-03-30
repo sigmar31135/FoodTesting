@@ -42,14 +42,18 @@ public class Attribute extends Activity{
 	
 	ArrayList<HashMap<String, String>> data = new ArrayList<HashMap<String,String>>();
 	ArrayList<HashMap<String, String>> data_child,data_attribute = new ArrayList<HashMap<String,String>>();
-	String tid;
+	String tid,uid;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.attribute);
+		Bundle bundle = getIntent().getExtras();
+		tid = bundle.getString("tid");
+		uid = bundle.getString("uid");
 		
+		Toast.makeText(context, tid + ":"+uid, Toast.LENGTH_LONG).show();
 		initial();
 		get_Attribute();
 		set_listview();

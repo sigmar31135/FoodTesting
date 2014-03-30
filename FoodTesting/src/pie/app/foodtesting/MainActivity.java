@@ -214,8 +214,8 @@ public class MainActivity extends Activity {
 
 				Intent intent = new Intent(MainActivity.this,
 						MainActivity.class);
-				intent.putExtra("user_id", user_id);
-				intent.putExtra("TestId", TestId);
+				intent.putExtra("uid", user_id);
+				intent.putExtra("tid", TestId);
 				finish();
 				startActivity(intent);
 
