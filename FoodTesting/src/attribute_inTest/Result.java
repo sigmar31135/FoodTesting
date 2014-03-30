@@ -30,9 +30,10 @@ public class Result extends Activity{
 	ExpandableListView expandableListView_result;
 	Button done;
 	String json = "[";
-	String tid = "15";
-	String uid = "2";
+	String tid;
+	String uid;
 	Context context = this;
+	Attribute classAttribute;
 	ArrayList<HashMap<String, String>> data = new ArrayList<HashMap<String,String>>();
 	
 		@Override
@@ -42,6 +43,8 @@ public class Result extends Activity{
 			setContentView(R.layout.result);
 			Bundle bundle = getIntent().getExtras();
 			data = (ArrayList<HashMap<String, String>>) bundle.getSerializable("data");
+			uid = bundle.getString("uid");
+			tid = bundle.getString("tid");
 			
 			for(int i=0;i<data.size();i++)
 			{
@@ -109,6 +112,7 @@ public class Result extends Activity{
 					params.add(new BasicNameValuePair("array", json));
 					post.send(url, params);
 					
+					classAttribute.finish();
 					finish();
 				}
 			});

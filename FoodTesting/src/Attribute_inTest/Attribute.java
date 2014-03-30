@@ -39,7 +39,7 @@ public class Attribute extends Activity{
 	Button done;
 	LinearLayout listview;
 	Context context = this;
-	
+	Attribute page_atAttribute = this;
 	ArrayList<HashMap<String, String>> data = new ArrayList<HashMap<String,String>>();
 	ArrayList<HashMap<String, String>> data_child,data_attribute = new ArrayList<HashMap<String,String>>();
 	String tid,uid;
@@ -79,7 +79,7 @@ public class Attribute extends Activity{
 		String url = "http://food.tartecake.com/countatt.php";
 		http_post post = new http_post(context);
 		
-		params.add(new BasicNameValuePair("tid","15"));
+		params.add(new BasicNameValuePair("tid",tid));
 		data_attribute = post.get_attribute(url, params);	
 			
 	}
@@ -171,6 +171,9 @@ public class Attribute extends Activity{
 				// TODO Auto-generated method stub
 				Intent intent = new Intent(Attribute.this,Result.class);
 				intent.putExtra("data", data);
+				intent.putExtra("uid", uid);
+				intent.putExtra("tid", tid);
+				intent.putExtra("page", Attribute.class);
 				startActivity(intent);
 				/*
 				for(int i=0;i<data.size();i++)
@@ -196,10 +199,4 @@ public class Attribute extends Activity{
 		listview = (LinearLayout)findViewById(R.id.listview);
 	}
 
-	@Override
-	protected void onStop() {
-		// TODO Auto-generated method stub
-		super.onStop();
-		finish();
-	}
 }
