@@ -20,6 +20,7 @@ import org.json.JSONObject;
 import Adapter.setActionBar;
 import android.app.ActionBar;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -100,6 +101,21 @@ public class Login extends Activity {
 	};
 
 	private class CheckUser extends AsyncTask<Void, Void, String> {
+		
+		ProgressDialog objLoading;
+		
+		@Override
+		protected void onPreExecute() {
+			// TODO Auto-generated method stub
+			super.onPreExecute();
+			objLoading = new ProgressDialog(Login.this);
+			objLoading.setCancelable(false);
+			objLoading.setMessage("Please wait...");
+			objLoading.show();
+			
+		}
+		
+		
 
 		@Override
 		protected String doInBackground(Void... params) {
@@ -147,6 +163,8 @@ public class Login extends Activity {
 		protected void onPostExecute(String result) {
 			// TODO Auto-generated method stub
 			super.onPostExecute(result);
+			
+			objLoading.cancel();
 
 			if (result.equals("fail")) {
 				Toast.makeText(Login.this, "Invalid username or password.",
