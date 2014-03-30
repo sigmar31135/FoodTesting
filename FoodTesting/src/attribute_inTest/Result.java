@@ -12,6 +12,7 @@ import org.json.JSONObject;
 
 import pie.app.foodtesting.R;
 import Adapter.Adapter_result;
+import Adapter.setActionBar;
 import Connect_server.http_post;
 import android.app.Activity;
 import android.content.Context;
@@ -46,7 +47,8 @@ public class Result extends Activity{
 			data = (ArrayList<HashMap<String, String>>) bundle.getSerializable("data");
 			uid = bundle.getString("uid");
 			tid = bundle.getString("tid");
-			
+			getActionBar().hide();
+			//new setActionBar(getActionBar()	, "Test" );
 	
 			for(int i=0;i<data.size();i++)
 			{

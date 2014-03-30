@@ -56,6 +56,8 @@ public class Attribute extends Activity{
 		bundle = getIntent().getExtras();
 		tid = bundle.getString("tid");
 		uid = bundle.getString("uid");
+		
+		getActionBar().hide();
 		initial();
 		get_Attribute();
 		
@@ -131,10 +133,11 @@ public class Attribute extends Activity{
 					
 					SeekBar seekBar = (SeekBar)view2.findViewById(R.id.seekBar);
 					
-					//Double double1 = Double.parseDouble(data.get(i).get("point_"+String.valueOf(j)));
-					//double1 = double1*100/15;
-					//int seek = double1.intValue();
-					//seekBar.setProgress(seek);
+					Double double1 = Double.parseDouble(data.get(i).get("point_"+String.valueOf(j)));
+					double1 = double1*100/15;
+					int seek = double1.intValue();
+					//Toast.makeText(context, String.valueOf(seek),Toast.LENGTH_LONG).show();
+					seekBar.setProgress(seek);
 					
 					seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 				        @SuppressLint("ResourceAsColor") public void onProgressChanged(SeekBar seekBar,int progress, boolean fromUser){
