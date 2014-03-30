@@ -43,6 +43,7 @@ public class Attribute extends Activity{
 	ArrayList<HashMap<String, String>> data = new ArrayList<HashMap<String,String>>();
 	ArrayList<HashMap<String, String>> data_child,data_attribute = new ArrayList<HashMap<String,String>>();
 	String tid,uid;
+	int count=0;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -96,20 +97,22 @@ public class Attribute extends Activity{
 			name_Attribute.setTextSize(30);
 			map.put("aname", data_attribute.get(i).get("aname"));
 			map.put("aid", data_attribute.get(i).get("aid"));
+			count+=2;
 			((ViewGroup) listview).addView(view,listview.getChildCount(), new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
 			
 			ArrayList<HashMap<String, String>> data_child = new ArrayList<HashMap<String,String>>();
 			data_child = get_child(data_attribute.get(i).get("aid"));
+					
 			
 			for(int j=0;j<data_child.size();j++){
-				
+					
 				    final View view2 = inflater.inflate(R.layout.item_seekbar, null);
 					TextView name_child = (TextView)view2.findViewById(R.id.attribute_name);
 					name_child.setText(data_child.get(j).get("cname"));
 					name_child.setTextSize(25);
 					map.put("cname_"+String.valueOf(j), data_child.get(j).get("cname"));
 					map.put("cid_"+String.valueOf(j), data_child.get(j).get("cid"));
-					
+					count+=3;
 					LinearLayout parent_scale = (LinearLayout)view2.findViewById(R.id.parent_scale);	
 			 
 						for(int k=0;k<15;k++)
@@ -169,25 +172,28 @@ public class Attribute extends Activity{
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				
+				int size=0;
+				for(int i=0;i<data.size();i++)
+				{
+					for(int j=0;j<data.get(i).size();j++)
+					{
+						size++;
+					}
+			
+				}
+				
+				
+				if(size==count){
 				Intent intent = new Intent(Attribute.this,Result.class);
 				intent.putExtra("data", data);
 				intent.putExtra("uid", uid);
 				intent.putExtra("tid", tid);
-				intent.putExtra("page", Attribute.class);
+				intent.putExtra("page",Attribute.class);
 				startActivity(intent);
-				/*
-				for(int i=0;i<data.size();i++)
-				{
-					Log.d("item : "+String.valueOf(i), "item Attribute: "+data.get(i).get("aname"));
-					Log.d("item ","item child size : "+String.valueOf(data.get(i).size()));
-					for(int j=0;j<((data.get(i).size())-2)/3;j++)
-					{
-						
-						Log.d("item ","item Child : "+data.get(i).get("cname_"+String.valueOf(j)));
-						//Toast.makeText(context, String.valueOf(data.get(i).size()), Toast.LENGTH_LONG).show();
-					}
-					
-				}*/
+				}
+				else
+					Toast.makeText(context, "กรุณาให้คะแนนให้ครบ", Toast.LENGTH_LONG).show();
 			}
 		});
 	}
