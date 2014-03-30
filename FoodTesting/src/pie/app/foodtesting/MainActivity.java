@@ -46,6 +46,9 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		
+		Log.d("GGGGGG", "ON CREATE");
+		
 		Bundle extras = getIntent().getExtras();
 		if (extras != null) {
 			user_id = extras.getString("user_id");
@@ -66,6 +69,7 @@ public class MainActivity extends Activity {
 	protected void onPause() {
 		// TODO Auto-generated method stub
 		super.onPause();
+		Log.d("GGGGGG", "ON PAUSE");
 		CheckPause = 1;
 		
 	}
@@ -214,8 +218,8 @@ public class MainActivity extends Activity {
 
 				Intent intent = new Intent(MainActivity.this,
 						MainActivity.class);
-				intent.putExtra("uid", user_id);
-				intent.putExtra("tid", TestId);
+				intent.putExtra("user_id", user_id);
+				intent.putExtra("TestId", TestId);
 				finish();
 				startActivity(intent);
 
