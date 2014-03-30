@@ -86,8 +86,20 @@ public class Adapter_test extends BaseAdapter{
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				Intent intent = new Intent(context,Attribute.class);
-				intent.putExtra("user_id", user_id);
-				intent.putExtra("test_id", TestId.get(index)[0]);
+				intent.putExtra("uid", user_id);
+				intent.putExtra("tid", TestId.get(index)[0]);
+				context.startActivity(intent);
+			}
+		});
+		
+		test_id.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent = new Intent(context,Attribute.class);
+				intent.putExtra("uid", user_id);
+				intent.putExtra("tid", TestId.get(index)[0]);
 				context.startActivity(intent);
 			}
 		});
