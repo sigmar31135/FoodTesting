@@ -114,7 +114,7 @@ public class Attribute extends Activity{
 				    		
 						    TextView point = (TextView)child.findViewById(R.id.txt_scale);
 						    point.setText(String.valueOf(k+1));
-						    point.setTextSize(18);
+						    point.setTextSize(22);
 						
 						    if(k==0)
 						    	 parent_scale.addView(child, 1);
@@ -127,7 +127,7 @@ public class Attribute extends Activity{
 				    	
 				    display_point.setText(data.get(i).get("point_"+String.valueOf(j)));
 				    
-					display_point.setTextSize(22);
+					display_point.setTextSize(30);
 					final int index_j = j;
 					final int index_i = i;
 					
@@ -145,7 +145,7 @@ public class Attribute extends Activity{
 				        	double point = (double)progress;
 				        	point = Math.round(point*15/10)/10.0;		        	
 				        	display_point.setText(String.valueOf(point));	
-				        	display_point.setTextSize(32);
+				        	display_point.setTextSize(40);
 				        	display_point.setTextColor(Color.RED);
 				        	
 				        	data.get(index_i).put("point_"+String.valueOf(index_j), String.valueOf(point));
@@ -160,7 +160,7 @@ public class Attribute extends Activity{
 
 						public void onStopTrackingTouch(SeekBar seekBar) {
 							// TODO Auto-generated method stub
-							display_point.setTextSize(22);
+							display_point.setTextSize(30);
 							display_point.setTextColor(Color.BLACK);
 						}
 				    });
@@ -237,7 +237,7 @@ public class Attribute extends Activity{
 				    		
 						    TextView point = (TextView)child.findViewById(R.id.txt_scale);
 						    point.setText(String.valueOf(k+1));
-						    point.setTextSize(18);
+						    point.setTextSize(22);
 						
 						    if(k==0)
 						    	 parent_scale.addView(child, 1);
@@ -250,7 +250,7 @@ public class Attribute extends Activity{
 				    	
 				    display_point.setText("0.0");
 				    
-					display_point.setTextSize(22);
+					display_point.setTextSize(30);
 					final int index = j;			
 					
 					SeekBar seekBar = (SeekBar)view2.findViewById(R.id.seekBar);
@@ -260,7 +260,7 @@ public class Attribute extends Activity{
 				        	double point = (double)progress;
 				        	point = Math.round(point*15/10)/10.0;		        	
 				        	display_point.setText(String.valueOf(point));	
-				        	display_point.setTextSize(32);
+				        	display_point.setTextSize(40);
 				        	display_point.setTextColor(Color.RED);
 				        	
 				        	map.put("point_"+String.valueOf(index),String.valueOf(point));
@@ -274,7 +274,7 @@ public class Attribute extends Activity{
 
 						public void onStopTrackingTouch(SeekBar seekBar) {
 							// TODO Auto-generated method stub
-							display_point.setTextSize(22);
+							display_point.setTextSize(30);
 							display_point.setTextColor(Color.BLACK);
 						}
 				    });
@@ -309,6 +309,7 @@ public class Attribute extends Activity{
 				intent.putExtra("tid", tid);
 				intent.putExtra("page",Attribute.class);
 				startActivity(intent);
+				finish();
 				}
 				else
 					Toast.makeText(context, "กรุณาให้คะแนนให้ครบ", Toast.LENGTH_LONG).show();
@@ -323,11 +324,6 @@ public class Attribute extends Activity{
 		listview = (LinearLayout)findViewById(R.id.listview);
 	}
 	
-	@Override
-	protected void onStop() {
-		// TODO Auto-generated method stub
-		super.onStop();
-		finish();
-	}
+
 
 }
