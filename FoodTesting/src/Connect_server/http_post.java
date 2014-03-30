@@ -18,6 +18,7 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.protocol.HTTP;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -144,15 +145,15 @@ public class http_post {
 		return str.toString().substring(68);
 	}
 	
-	public String send(String url, JSONArray params)
+	public String send(String url, List<NameValuePair> params)
 	{
 		StringBuilder str = new StringBuilder();
 		HttpClient client = new DefaultHttpClient();
 		HttpPost httpPost = new HttpPost(url);
 		Log.d("client", "client 0");
 		try {
-			
-			httpPost.setEntity(new StringEntity(params.toString()));
+
+			httpPost.setEntity(new UrlEncodedFormEntity(params));
 			HttpResponse response = client.execute(httpPost);
 			StatusLine statusLine = response.getStatusLine();
 			int statusCode = statusLine.getStatusCode();
@@ -168,7 +169,7 @@ public class http_post {
 				while ((line = reader.readLine()) != null) {
 					str.append(line);
 				}
-				Log.d("111111111111111 : ", "11111111111111 : "  + str.toString().substring(68));
+				Log.d("aaaaaaaaaaaaaaaaaa : ", "aaaaaaaaaaaaaaaaaa : "  + str.toString().substring(68));
 				
 			}
 		}

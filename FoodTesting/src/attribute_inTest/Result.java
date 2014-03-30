@@ -7,6 +7,7 @@ import java.util.List;
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import pie.app.foodtesting.R;
@@ -20,18 +21,20 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ExpandableListView;
+import android.widget.Toast;
 
 public class Result extends Activity{
 
-	JSONArray array = new JSONArray();
+	List<NameValuePair> params = new ArrayList<NameValuePair>();
 	
 	ExpandableListView expandableListView_result;
 	Button done;
+	String json = "[";
 	String tid = "15";
 	String uid = "2";
 	Context context = this;
-	List<NameValuePair> params = new ArrayList<NameValuePair>();
 	ArrayList<HashMap<String, String>> data = new ArrayList<HashMap<String,String>>();
+	
 		@Override
 		protected void onCreate(Bundle savedInstanceState) {
 			// TODO Auto-generated method stub
@@ -39,6 +42,7 @@ public class Result extends Activity{
 			setContentView(R.layout.result);
 			Bundle bundle = getIntent().getExtras();
 			data = (ArrayList<HashMap<String, String>>) bundle.getSerializable("data");
+			
 			for(int i=0;i<data.size();i++)
 			{
 				Log.d("item ", "item Attribute: "+data.get(i).get("Attribute"));
@@ -55,23 +59,42 @@ public class Result extends Activity{
 		}
 
 		private void set_information() {
+			//Log.d("aaaaaaaaaa", "aaaaaaaaaaa data size : "+String.valueOf(data.size()));
+			
+			//Toast.makeText(context, json, Toast.LENGTH_LONG).show();
+			
 			for(int i=0;i<data.size();i++)
 			{
 				
-				Log.d("item : "+String.valueOf(i), "item Attribute: "+data.get(i).get("aname"));
-				Log.d("item ","item child size : "+String.valueOf(data.get(i).size()));
-				for(int j=0;j<((data.get(i).size())-2)/3;j++)
-				{	
-					params.add(new BasicNameValuePair("tid",tid));
-					params.add(new BasicNameValuePair("uid",uid));
-					params.add(new BasicNameValuePair("cid",data.get(i).get("cid_"+String.valueOf(j))));
-					params.add(new BasicNameValuePair("aid",data.get(i).get("aid_"+String.valueOf(j))));
-					params.add(new BasicNameValuePair("point",data.get(i).get("point_"+String.valueOf(j))));
+				for(int j=0;j<( (data.get(i).size())-2 )/3;j++)
+				{
 					
-					array.put(params);
-					Log.d("item ","item Child : "+data.get(i).get("cname_"+String.valueOf(j)));
+					json += "{";
+					String cid = data.get(i).get("cid_"+String.valueOf(j));
+					String aid = data.get(i).get("aid");
+					String point = data.get(i).get("point_"+String.valueOf(j));
+					Log.d("aaaaaaaaaa", "aaaaaaaaaaa cid : "+cid);
+					Log.d("aaaaaaaaaa", "aaaaaaaaaaa aid : "+aid);
+					Log.d("aaaaaaaaaa", "aaaaaaaaaaa tid : "+tid);
+					Log.d("aaaaaaaaaa", "aaaaaaaaaaa point : "+point);
+					
+					json += "\"tid\":" + tid + ",";
+					json += "\"uid\":" + uid + ",";
+					json += "\"cid\":" + cid + ",";
+					json += "\"aid\":" + aid + ",";
+					json += "\"point\":" + point;
+					
+					if(j != (data.get(i).size()-2)/3 -1)
+						json += "},";
+					else
+						json += "}";
+				
 				}
+			
 			}
+			json = json+"]";
+			Log.d("xxxxxxxxxxx", "xxxxxxxxx : "+json);
+			
 		}
 
 		private void set_button() {
@@ -82,8 +105,9 @@ public class Result extends Activity{
 				public void onClick(View v) {
 					// TODO Auto-generated method stub
 					String url = "http://food.tartecake.com/summary.php";
-					http_post post = new http_post(context);			
-					post.send(url, array);
+					http_post post = new http_post(context);		
+					params.add(new BasicNameValuePair("array", json));
+					post.send(url, params);
 					
 					finish();
 				}
