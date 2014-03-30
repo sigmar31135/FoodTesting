@@ -33,7 +33,7 @@ public class Result extends Activity{
 	String tid;
 	String uid;
 	Context context = this;
-	Attribute classAttribute;
+	Class<Attribute> classAttribute;
 	ArrayList<HashMap<String, String>> data = new ArrayList<HashMap<String,String>>();
 	
 		@Override
@@ -46,7 +46,7 @@ public class Result extends Activity{
 			uid = bundle.getString("uid");
 			tid = bundle.getString("tid");
 			
-			//classAttribute =  (Attribute)getIntent().getSerializableExtra("page");
+	
 			for(int i=0;i<data.size();i++)
 			{
 				Log.d("item ", "item Attribute: "+data.get(i).get("Attribute"));
@@ -67,32 +67,28 @@ public class Result extends Activity{
 			{
 				
 				for(int j=0;j<( (data.get(i).size())-2 )/3;j++)
-				{
+				{			
+					if(i==0 && j==0)
+						json += "{";
+					else
+						json += ",{";
 					
-					json += "{";
 					String cid = data.get(i).get("cid_"+String.valueOf(j));
 					String aid = data.get(i).get("aid");
 					String point = data.get(i).get("point_"+String.valueOf(j));
-					Log.d("aaaaaaaaaa", "aaaaaaaaaaa cid : "+cid);
-					Log.d("aaaaaaaaaa", "aaaaaaaaaaa aid : "+aid);
-					Log.d("aaaaaaaaaa", "aaaaaaaaaaa tid : "+tid);
-					Log.d("aaaaaaaaaa", "aaaaaaaaaaa point : "+point);
-					
 					json += "\"tid\":" + tid + ",";
 					json += "\"uid\":" + uid + ",";
 					json += "\"cid\":" + cid + ",";
 					json += "\"aid\":" + aid + ",";
 					json += "\"point\":" + point;
-					
-					if(j != (data.get(i).size()-2)/3 -1)
-						json += "},";
-					else
-						json += "}";
-				
+					json += "}";
+
 				}
 			
 			}
-			json = json+"]";
+			
+			json += "]";
+			
 			Log.d("xxxxxxxxxxx", "xxxxxxxxx : "+json);
 			
 		}
@@ -109,7 +105,6 @@ public class Result extends Activity{
 					params.add(new BasicNameValuePair("array", json));
 					post.send(url, params);
 					
-					classAttribute.finish();
 					finish();
 				}
 			});
