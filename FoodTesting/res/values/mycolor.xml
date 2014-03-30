@@ -5,4 +5,10 @@
      <color name="peer_red">#FF3333</color>
      <color name="peer_green">#99FF99</color>
      <color name="gree_blue">#CCFFFF</color>
+     <color name="green">#1ed085</color>
+     <color name="green_press">#18a369</color>
+     <color name="actionbar_bac">#00729f</color>
+     <color name="actionbar_txt_color">#fffbff</color>
+     <color name="main_activity_bac">#fffbff</color>
+     <color name="block_test">#eaeaea</color>
 </resources>

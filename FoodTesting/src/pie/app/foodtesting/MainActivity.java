@@ -3,7 +3,9 @@ package pie.app.foodtesting;
 import java.util.ArrayList;
 
 import Adapter.Adapter_test;
+import Adapter.setActionBar;
 import android.os.Bundle;
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -31,15 +33,15 @@ public class MainActivity extends Activity {
 			TestId = (ArrayList<String[]>)extras.get("TestId");
 		}
 		
+		new setActionBar(getActionBar(), "MY TEST");
+		
 		if(!user_id.isEmpty()){
-			
-			
-			
 			initial();
 			set_test();
 		}
 		
 	}
+	
 	
 	private void set_test() {
 		// TODO Auto-generated method stub
@@ -59,7 +61,7 @@ public class MainActivity extends Activity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
+		getMenuInflater().inflate(R.menu.main_activity_menu, menu);
 		return true;
 	}
 	
@@ -97,5 +99,7 @@ public class MainActivity extends Activity {
 
 				}).setNegativeButton("No", null).show();
 	}
+	
+	
 
 }

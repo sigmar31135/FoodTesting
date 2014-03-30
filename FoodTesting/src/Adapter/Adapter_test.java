@@ -57,6 +57,16 @@ public class Adapter_test extends BaseAdapter{
 		final int index = position;
 		TextView test_id = (TextView)convertView.findViewById(R.id.test_id);
 		test_id.setText("Test ID : " + TestId.get(index)[0]);
+		
+		TextView test_attribute = (TextView)convertView.findViewById(R.id.test_attribute);
+		test_attribute.setText("Attribute : " + TestId.get(index)[2]);
+		
+		TextView test_create = (TextView)convertView.findViewById(R.id.test_create);
+		test_create.setText("Create : " + TestId.get(index)[3].substring(0,9));
+		
+		
+		
+		
 		// set id
 		Button btn_test = (Button)convertView.findViewById(R.id.btn_test);
 		if(TestId.get(position)[1].equals("0")){
@@ -67,12 +77,7 @@ public class Adapter_test extends BaseAdapter{
 			btn_test.setBackgroundResource(R.drawable.edit_btn);
 		}
 		
-		ImageView imgTest = (ImageView) convertView.findViewById(R.id.ImaegTestMainActivity);
-		
-		if(TestId.get(index)[0].equals("101")||TestId.get(index)[0].equals("102"))
-			imgTest.setImageResource(R.drawable.image101);
-		else
-			imgTest.setImageResource(R.drawable.image102);
+	
 		
 		
 		btn_test.setOnClickListener(new OnClickListener() {
