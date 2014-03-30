@@ -46,6 +46,7 @@ public class Result extends Activity{
 			uid = bundle.getString("uid");
 			tid = bundle.getString("tid");
 			
+			//classAttribute =  (Attribute)getIntent().getSerializableExtra("page");
 			for(int i=0;i<data.size();i++)
 			{
 				Log.d("item ", "item Attribute: "+data.get(i).get("Attribute"));
@@ -61,11 +62,7 @@ public class Result extends Activity{
 			
 		}
 
-		private void set_information() {
-			//Log.d("aaaaaaaaaa", "aaaaaaaaaaa data size : "+String.valueOf(data.size()));
-			
-			//Toast.makeText(context, json, Toast.LENGTH_LONG).show();
-			
+		private void set_information() {		
 			for(int i=0;i<data.size();i++)
 			{
 				
