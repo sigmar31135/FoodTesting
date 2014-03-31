@@ -10,6 +10,7 @@ import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 
 import pie.app.foodtesting.R;
+import Adapter.setActionBar;
 import Connect_server.http_post;
 import android.R.integer;
 import android.annotation.SuppressLint;
@@ -57,7 +58,8 @@ public class Attribute extends Activity{
 		tid = bundle.getString("tid");
 		uid = bundle.getString("uid");
 		
-		getActionBar().hide();
+		
+		new setActionBar(getActionBar(), "Test id:"+tid);
 		initial();
 		get_Attribute();
 		

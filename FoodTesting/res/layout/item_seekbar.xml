@@ -63,7 +63,8 @@
                 android:id="@+id/seekBar"
                 android:layout_width="match_parent"
                 android:progressDrawable="@color/green"
-               android:thumb="@drawable/slider_control"
+                android:thumb="@drawable/slider_control"
+               
                 android:layout_height="wrap_content" />
 
         </LinearLayout>

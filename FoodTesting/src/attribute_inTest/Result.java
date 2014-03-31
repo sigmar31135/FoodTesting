@@ -47,9 +47,8 @@ public class Result extends Activity{
 			data = (ArrayList<HashMap<String, String>>) bundle.getSerializable("data");
 			uid = bundle.getString("uid");
 			tid = bundle.getString("tid");
-			getActionBar().hide();
-			//new setActionBar(getActionBar()	, "Test" );
-	
+			new setActionBar(getActionBar(), "Test id:"+tid);
+		
 			for(int i=0;i<data.size();i++)
 			{
 				Log.d("item ", "item Attribute: "+data.get(i).get("Attribute"));
