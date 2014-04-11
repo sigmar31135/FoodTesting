@@ -70,20 +70,21 @@ public final class R {
         public static final int login_password=0x7f090014;
         public static final int login_username=0x7f090013;
         public static final int parent_scale=0x7f09000f;
-        public static final int refesh=0x7f090019;
+        public static final int refesh=0x7f09001a;
         public static final int result_attribute_name=0x7f09000a;
         public static final int result_attribute_point=0x7f09000b;
-        public static final int result_done=0x7f090017;
+        public static final int result_done=0x7f090018;
+        public static final int result_edit=0x7f090017;
         public static final int result_expendableList=0x7f090016;
         public static final int scrollView1=0x7f090001;
         public static final int seekBar=0x7f090011;
-        public static final int sing_out=0x7f09001a;
+        public static final int sing_out=0x7f09001b;
         public static final int test_attribute=0x7f090007;
         public static final int test_create=0x7f090008;
         public static final int test_id=0x7f090006;
         public static final int textView1=0x7f090010;
         public static final int txt_attribute=0x7f09000c;
-        public static final int txt_scale=0x7f090018;
+        public static final int txt_scale=0x7f090019;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;

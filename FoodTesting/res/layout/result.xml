@@ -15,18 +15,35 @@
             android:layout_height="wrap_content" >
         </ExpandableListView>
 
-        <Button
-            android:id="@+id/result_done"
-            android:layout_alignParentBottom="true"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:layout_marginTop="10dp"
-            android:text="Done"
-            android:textSize="30dp"
-            android:background="@drawable/button_action" />
+            android:layout_height="50dp" 
+            android:layout_alignParentBottom="true"
+                            android:layout_marginBottom="10dp">
+
+            <Button
+                android:id="@+id/result_edit"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="2"
+                android:background="@drawable/button_action"
+                android:text="Edit"
+                android:textSize="30dp" />
+
+            <Button
+                android:id="@+id/result_done"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/button_action"
+                android:text="Done"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:textSize="30dp" />
+
+        </LinearLayout>
 
     </RelativeLayout>
 

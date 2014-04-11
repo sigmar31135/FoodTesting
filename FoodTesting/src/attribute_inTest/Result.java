@@ -30,7 +30,7 @@ public class Result extends Activity{
 	List<NameValuePair> params = new ArrayList<NameValuePair>();
 	
 	ExpandableListView expandableListView_result;
-	Button done;
+	Button done,edit;
 	String json = "[";
 	String tid;
 	String uid;
@@ -110,6 +110,19 @@ public class Result extends Activity{
 					finish();
 				}
 			});
+			
+			edit.setOnClickListener(new OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					// TODO Auto-generated method stub
+					Intent intent = new Intent(Result.this,Attribute.class);
+					intent.putExtra("uid", uid);
+					intent.putExtra("tid", tid);
+					intent.putExtra("data", data);
+					startActivity(intent);
+				}
+			});
 		}
 
 		private void set_expendablelist() {
@@ -122,7 +135,7 @@ public class Result extends Activity{
 			// TODO Auto-generated method stub
 			expandableListView_result = (ExpandableListView)findViewById(R.id.result_expendableList);
 			done = (Button)findViewById(R.id.result_done);
-			
+			edit = (Button)findViewById(R.id.result_edit);
 		}
 		
 		@Override

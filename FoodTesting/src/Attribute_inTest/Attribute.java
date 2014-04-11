@@ -68,8 +68,7 @@ public class Attribute extends Activity{
 				data = (ArrayList<HashMap<String, String>>) bundle.getSerializable("data");
 				re_listview();
 			}
-		else
-		
+		else	
 		set_listview();
 		
 		
