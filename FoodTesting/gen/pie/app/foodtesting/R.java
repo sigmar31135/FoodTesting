@@ -51,40 +51,44 @@ public final class R {
         public static final int refresh_button=0x7f02000e;
         public static final int slider=0x7f02000f;
         public static final int slider_control=0x7f020010;
-        public static final int test_btn=0x7f020011;
-        public static final int test_card=0x7f020012;
-        public static final int topbar=0x7f020013;
-        public static final int topbar_logo=0x7f020014;
+        public static final int slider_control11=0x7f020011;
+        public static final int slider_control7=0x7f020012;
+        public static final int test_btn=0x7f020013;
+        public static final int test_card=0x7f020014;
+        public static final int topbar=0x7f020015;
+        public static final int topbar_logo=0x7f020016;
     }
     public static final class id {
         public static final int ImaegTestMainActivity=0x7f090005;
         public static final int attribute_done=0x7f090003;
-        public static final int attribute_name=0x7f09000d;
-        public static final int btn_signin=0x7f090015;
+        public static final int attribute_name=0x7f09000e;
+        public static final int bar=0x7f090013;
+        public static final int btn_signin=0x7f090017;
         public static final int btn_test=0x7f090009;
-        public static final int display_point=0x7f09000e;
+        public static final int display_point=0x7f09000f;
         public static final int expandableListView=0x7f090004;
         public static final int gridView=0x7f090000;
-        public static final int imageLogin=0x7f090012;
+        public static final int header_result_txt=0x7f09000c;
+        public static final int imageLogin=0x7f090014;
         public static final int listview=0x7f090002;
-        public static final int login_password=0x7f090014;
-        public static final int login_username=0x7f090013;
-        public static final int parent_scale=0x7f09000f;
-        public static final int refesh=0x7f09001a;
+        public static final int login_password=0x7f090016;
+        public static final int login_username=0x7f090015;
+        public static final int parent_scale=0x7f090010;
+        public static final int refesh=0x7f09001c;
         public static final int result_attribute_name=0x7f09000a;
         public static final int result_attribute_point=0x7f09000b;
-        public static final int result_done=0x7f090018;
-        public static final int result_edit=0x7f090017;
-        public static final int result_expendableList=0x7f090016;
+        public static final int result_done=0x7f09001a;
+        public static final int result_edit=0x7f090019;
+        public static final int result_expendableList=0x7f090018;
         public static final int scrollView1=0x7f090001;
-        public static final int seekBar=0x7f090011;
-        public static final int sing_out=0x7f09001b;
+        public static final int seekBar=0x7f090012;
+        public static final int sing_out=0x7f09001d;
         public static final int test_attribute=0x7f090007;
         public static final int test_create=0x7f090008;
         public static final int test_id=0x7f090006;
-        public static final int textView1=0x7f090010;
-        public static final int txt_attribute=0x7f09000c;
-        public static final int txt_scale=0x7f090019;
+        public static final int textView1=0x7f090011;
+        public static final int txt_attribute=0x7f09000d;
+        public static final int txt_scale=0x7f09001b;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
@@ -92,13 +96,14 @@ public final class R {
         public static final int block_attribute=0x7f030002;
         public static final int block_test=0x7f030003;
         public static final int child_result=0x7f030004;
-        public static final int item_attribute=0x7f030005;
-        public static final int item_seekbar=0x7f030006;
-        public static final int login=0x7f030007;
-        public static final int result=0x7f030008;
-        public static final int scale=0x7f030009;
-        public static final int waiting_activity=0x7f03000a;
-        public static final int work_activity=0x7f03000b;
+        public static final int header_result=0x7f030005;
+        public static final int item_attribute=0x7f030006;
+        public static final int item_seekbar=0x7f030007;
+        public static final int login=0x7f030008;
+        public static final int result=0x7f030009;
+        public static final int scale=0x7f03000a;
+        public static final int waiting_activity=0x7f03000b;
+        public static final int work_activity=0x7f03000c;
     }
     public static final class menu {
         public static final int main=0x7f080000;

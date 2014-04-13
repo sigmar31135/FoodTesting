@@ -19,9 +19,11 @@ import android.app.ExpandableListActivity;
 import android.app.ActionBar.LayoutParams;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -31,6 +33,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ExpandableListView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -177,7 +180,7 @@ public class Attribute extends Activity{
 		ArrayList<HashMap<String, String>> data_child = new ArrayList<HashMap<String,String>>();
 		
 		List<NameValuePair> params = new ArrayList<NameValuePair>();
-		String url = "http://food.tartecake.com/countch.php?aid="+aid;
+		String url = "http://food.tartecake.com/countch.php?aid="+aid+"&uid="+uid+"&tid="+tid;
 		http_post post = new http_post(context);
 		
 		//params.add(new BasicNameValuePair("tid",aid));
@@ -197,7 +200,7 @@ public class Attribute extends Activity{
 	}
 
 
-	private void set_listview() {
+	@SuppressLint("ResourceAsColor") private void set_listview() {
 		LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		
 		for(int i=0;i<data_attribute.size();i++){
@@ -213,7 +216,7 @@ public class Attribute extends Activity{
 			
 			ArrayList<HashMap<String, String>> data_child = new ArrayList<HashMap<String,String>>();
 			data_child = get_child(data_attribute.get(i).get("aid"));
-					
+			
 			
 			for(int j=0;j<data_child.size();j++){
 					
@@ -224,8 +227,10 @@ public class Attribute extends Activity{
 					map.put("cname_"+String.valueOf(j), data_child.get(j).get("cname"));
 					map.put("cid_"+String.valueOf(j), data_child.get(j).get("cid"));
 					count+=3;
+					
+				
 					LinearLayout parent_scale = (LinearLayout)view2.findViewById(R.id.parent_scale);	
-			 
+					
 						for(int k=0;k<15;k++)
 				    	{	
 				    		final RelativeLayout child = (RelativeLayout)inflater.inflate(R.layout.scale, null);
@@ -249,12 +254,37 @@ public class Attribute extends Activity{
 					
 					final TextView display_point = (TextView)view2.findViewById(R.id.display_point);	
 				    	
-				    display_point.setText("0.0");
-				    
+				    display_point.setText(data_child.get(j).get("point"));
 					display_point.setTextSize(30);
 					final int index = j;			
 					
+					Double double1 = Double.parseDouble(data_child.get(j).get("point"));
+					double1 = double1*100 /15;
+					int seek = double1.intValue();
 					SeekBar seekBar = (SeekBar)view2.findViewById(R.id.seekBar);
+					seekBar.setProgress(seek);
+					;
+					if(data_child.get(j).get("point").contentEquals("0") == true )
+						seekBar.setProgress(0);
+					else
+						map.put("point_"+String.valueOf(index),data_child.get(j).get("point"));
+				     
+					
+					
+					Double min = 37.795275591*Double.parseDouble(data_child.get(j).get("min"));
+					Double max = 37.795275591*Double.parseDouble(data_child.get(j).get("max"));
+
+					RelativeLayout bar = (RelativeLayout)view2.findViewById(R.id.bar);
+					Button okButton = new Button(this);
+					RelativeLayout.LayoutParams head_params = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT,
+		                    LayoutParams.MATCH_PARENT);
+					okButton.setBackgroundColor(R.color.peer_red);
+					head_params.setMargins(min.intValue(),0,0,max.intValue());		
+					bar.addView(okButton, head_params);
+					
+				
+				   	
+				   	
 					seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 				        @SuppressLint("ResourceAsColor") public void onProgressChanged(SeekBar seekBar,int progress, boolean fromUser){
 				            //Do something here with new value
@@ -263,7 +293,6 @@ public class Attribute extends Activity{
 				        	display_point.setText(String.valueOf(point));	
 				        	display_point.setTextSize(40);
 				        	display_point.setTextColor(Color.RED);
-				        	
 				        	map.put("point_"+String.valueOf(index),String.valueOf(point));
 				        	
 				        }
@@ -303,7 +332,7 @@ public class Attribute extends Activity{
 					}
 				}
 				
-				if(size==count || bundle.getSerializable("data") != null){
+				if(size==count || bundle.getSerializable("data") != null || count < 0){
 				Intent intent = new Intent(Attribute.this,Result.class);
 				intent.putExtra("data", data);
 				intent.putExtra("uid", uid);

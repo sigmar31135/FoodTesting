@@ -81,10 +81,10 @@ public class Adapter_result extends BaseExpandableListAdapter{
 			View convertView, ViewGroup parent) {
 		if(convertView==null){
 			 LayoutInflater inflater =  (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-			 convertView = inflater.inflate(R.layout.item_attribute, null);
+			 convertView = inflater.inflate(R.layout.header_result, null);
 		}
 			 
-			 TextView scale_name = (TextView)convertView.findViewById(R.id.txt_attribute);
+			 TextView scale_name = (TextView)convertView.findViewById(R.id.header_result_txt);
 			 scale_name.setText(data.get(groupPosition).get("aname"));
 			 scale_name.setTextSize(30);
 			 return convertView;

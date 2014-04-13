@@ -99,6 +99,10 @@ public class http_post {
 	                map = new HashMap<String, String>();
 	                map.put("cid", c.getString("cid"));
 	    			map.put("cname", c.getString("cname"));
+	    			map.put("point",c.getString("point"));
+	    			map.put("min",c.getString("min"));
+	    			map.put("max",c.getString("max"));
+	    			
 	    			MyArrList.add(map);
 	    		}
 				
