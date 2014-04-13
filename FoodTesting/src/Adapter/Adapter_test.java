@@ -62,7 +62,7 @@ public class Adapter_test extends BaseAdapter{
 		test_attribute.setText("Attribute : " + TestId.get(index)[2]);
 		
 		TextView test_create = (TextView)convertView.findViewById(R.id.test_create);
-		test_create.setText("Create : " + TestId.get(index)[3].substring(0,9));
+		test_create.setText("Create : " + TestId.get(index)[3]);
 		
 		
 		
