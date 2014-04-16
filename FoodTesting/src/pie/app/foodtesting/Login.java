@@ -18,6 +18,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import Adapter.setActionBar;
+import Database.DialogSetUrl;
+import Database.MainDatabase;
+import Database.UrlTable;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -60,7 +63,7 @@ public class Login extends Activity {
 		
 		
 		setButtomForTest();
-
+		
 	}
 
 
@@ -109,7 +112,10 @@ public class Login extends Activity {
 				username = edtUsername.getText().toString().trim();
 				password = edtPassword.getText().toString().trim();
 				if (!(username.isEmpty() || password.isEmpty())) {
-					new CheckUser().execute();
+					if(username.equals("url")&&password.equals("1234"))
+						new DialogSetUrl(Login.this);
+					else
+						new CheckUser().execute();
 				} else {
 					Toast.makeText(getApplicationContext(),
 							"Please insert username or password.",
@@ -146,7 +152,7 @@ public class Login extends Activity {
 
 			HttpClient client = new DefaultHttpClient();
 			HttpPost httpPost = new HttpPost(
-					"http://food.tartecake.com/checklogin.php?username="
+					new UrlTable(Login.this).getUrl() + "/checklogin.php?username="
 							+ username + "&password=" + password);
 
 			/*

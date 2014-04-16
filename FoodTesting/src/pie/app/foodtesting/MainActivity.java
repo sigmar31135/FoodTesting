@@ -19,6 +19,7 @@ import org.json.JSONObject;
 
 import Adapter.Adapter_test;
 import Adapter.setActionBar;
+import Database.UrlTable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.ActionBar;
@@ -47,7 +48,6 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
-		Log.d("GGGGGG", "ON CREATE");
 		
 		Bundle extras = getIntent().getExtras();
 		if (extras != null) {
@@ -69,7 +69,6 @@ public class MainActivity extends Activity {
 	protected void onPause() {
 		// TODO Auto-generated method stub
 		super.onPause();
-		Log.d("GGGGGG", "ON PAUSE");
 		CheckPause = 1;
 		
 	}
@@ -158,7 +157,7 @@ public class MainActivity extends Activity {
 
 			HttpClient client = new DefaultHttpClient();
 			HttpPost httpPost = new HttpPost(
-					"http://food.tartecake.com/refresh.php?uid=" + user_id);
+					new UrlTable(MainActivity.this).getUrl() + "/refresh.php?uid=" + user_id);
 
 			String Gabumon = "error";
 			try {
