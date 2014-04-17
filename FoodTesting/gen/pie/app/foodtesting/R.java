@@ -52,11 +52,12 @@ public final class R {
         public static final int slider=0x7f02000f;
         public static final int slider_control=0x7f020010;
         public static final int slider_control11=0x7f020011;
-        public static final int slider_control7=0x7f020012;
-        public static final int test_btn=0x7f020013;
-        public static final int test_card=0x7f020014;
-        public static final int topbar=0x7f020015;
-        public static final int topbar_logo=0x7f020016;
+        public static final int slider_control13=0x7f020012;
+        public static final int slider_control7=0x7f020013;
+        public static final int test_btn=0x7f020014;
+        public static final int test_card=0x7f020015;
+        public static final int topbar=0x7f020016;
+        public static final int topbar_logo=0x7f020017;
     }
     public static final class id {
         public static final int ImaegTestMainActivity=0x7f090005;

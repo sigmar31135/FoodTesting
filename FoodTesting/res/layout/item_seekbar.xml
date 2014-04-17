@@ -40,15 +40,17 @@
         </RelativeLayout>
 
         <LinearLayout
-            android:layout_width="155mm"
+            android:layout_width="162mm"
             android:layout_height="match_parent"
+            android:layout_marginRight="12dp"
             android:orientation="vertical" >
 
             <LinearLayout
                 android:id="@+id/parent_scale"
-                android:layout_width="155mm"
+                android:layout_width="153mm"
                 android:layout_height="40dp"
-                android:layout_marginRight="10dp"
+                android:layout_marginRight="6dp"
+                 android:layout_marginLeft="27dp"
                 android:orientation="horizontal" >
 
                 <TextView
@@ -61,13 +63,12 @@
 
             <SeekBar
                 android:id="@+id/seekBar"
-                android:layout_width="155mm"
-                android:layout_margin="0px"
+                android:layout_width="162mm"
+                android:layout_height="wrap_content"
+
                 android:progressDrawable="@color/green"
-                android:thumb="@drawable/slider_control11"
-				android:thumbOffset="5dp"
-               
-                android:layout_height="wrap_content" />
+                android:thumb="@drawable/slider_control13"
+                android:thumbOffset="7dp" />
 
             <RelativeLayout
                 android:layout_width="match_parent"

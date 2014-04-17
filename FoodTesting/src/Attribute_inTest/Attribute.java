@@ -144,8 +144,8 @@ public class Attribute extends Activity{
 					//Toast.makeText(context, String.valueOf(seek),Toast.LENGTH_LONG).show();
 					seekBar.setProgress(seek);
 					
-					final Double min = 62*Double.parseDouble(data_child.get(j).get("min"));
-					final Double max = 62*(14.8-Double.parseDouble(data_child.get(j).get("max")));
+					final Double min = 63*Double.parseDouble(data_child.get(j).get("min"));
+					final Double max = 63*(15.3-Double.parseDouble(data_child.get(j).get("max")));
 
 					
 					RelativeLayout bar = (RelativeLayout)view2.findViewById(R.id.bar);
@@ -154,9 +154,19 @@ public class Attribute extends Activity{
 		                    LayoutParams.MATCH_PARENT);
 					
 					okButton.setBackgroundColor(R.color.gree_blue);
-					head_params.setMargins(min.intValue(),0,max.intValue(),0);		
+					
+					if(min < 240)
+						head_params.setMargins(min.intValue() + 20,0,max.intValue()-10,0);		
+					else if(min < 480)
+						head_params.setMargins(min.intValue() + 15,0,max.intValue()-15,0);		
+					else if(min > 660)
+						head_params.setMargins(min.intValue() - 15,0,max.intValue()+10,0);							
+					else
+						head_params.setMargins(min.intValue()-5,0,max.intValue()+5,0);		
+					
 					if(data_child.get(j).get("min").contentEquals(data_child.get(j).get("max")) == false)
 						bar.addView(okButton, head_params);
+					
 					
 				
 				   	
@@ -281,7 +291,7 @@ public class Attribute extends Activity{
 					int seek = double1.intValue();
 					SeekBar seekBar = (SeekBar)view2.findViewById(R.id.seekBar);
 					seekBar.setProgress(seek);
-					;
+					
 					if(data_child.get(j).get("point").contentEquals("0") == true )
 						seekBar.setProgress(0);
 					else
@@ -290,8 +300,8 @@ public class Attribute extends Activity{
 					
 					Log.d("22222222", "222222222 : min max "+data_child.get(j).get("min")+" : "+data_child.get(j).get("max") );
 					
-					final Double min = 62*Double.parseDouble(data_child.get(j).get("min"));
-					final Double max = 62*(14.8-Double.parseDouble(data_child.get(j).get("max")));
+					final Double min = 63*Double.parseDouble(data_child.get(j).get("min"));
+					final Double max = 63*(15.3-Double.parseDouble(data_child.get(j).get("max")));
 
 					
 					RelativeLayout bar = (RelativeLayout)view2.findViewById(R.id.bar);
@@ -300,7 +310,16 @@ public class Attribute extends Activity{
 		                    LayoutParams.MATCH_PARENT);
 					
 					okButton.setBackgroundColor(R.color.gree_blue);
-					head_params.setMargins(min.intValue(),0,max.intValue(),0);		
+					
+					if(min < 240)
+						head_params.setMargins(min.intValue() + 20,0,max.intValue()-10,0);		
+					else if(min < 480)
+						head_params.setMargins(min.intValue() + 15,0,max.intValue()-15,0);		
+					else if(min > 660)
+						head_params.setMargins(min.intValue() - 15,0,max.intValue()+10,0);							
+					else
+						head_params.setMargins(min.intValue()-5,0,max.intValue()+5,0);		
+					
 					if(data_child.get(j).get("min").contentEquals(data_child.get(j).get("max")) == false)
 						bar.addView(okButton, head_params);
 					
