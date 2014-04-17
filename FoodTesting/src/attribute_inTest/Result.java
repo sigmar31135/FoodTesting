@@ -14,6 +14,7 @@ import pie.app.foodtesting.R;
 import Adapter.Adapter_result;
 import Adapter.setActionBar;
 import Connect_server.http_post;
+import Database.UrlTable;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -32,8 +33,7 @@ public class Result extends Activity{
 	ExpandableListView expandableListView_result;
 	Button done,edit;
 	String json = "[";
-	String tid;
-	String uid;
+	String tid,uid,web;
 	Context context = this;
 	Class<Attribute> classAttribute;
 	ArrayList<HashMap<String, String>> data = new ArrayList<HashMap<String,String>>();
@@ -47,6 +47,7 @@ public class Result extends Activity{
 			data = (ArrayList<HashMap<String, String>>) bundle.getSerializable("data");
 			uid = bundle.getString("uid");
 			tid = bundle.getString("tid");
+			web = new UrlTable(context).getUrl();
 			new setActionBar(getActionBar(), "Test id:"+tid);
 		
 			for(int i=0;i<data.size();i++)
@@ -102,7 +103,7 @@ public class Result extends Activity{
 				@Override
 				public void onClick(View v) {
 					// TODO Auto-generated method stub
-					String url = "http://food.tartecake.com/summary.php";
+					String url = web+"/summary.php";
 					http_post post = new http_post(context);		
 					params.add(new BasicNameValuePair("array", json));
 					post.send(url, params);
