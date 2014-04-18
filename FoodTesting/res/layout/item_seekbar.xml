@@ -63,7 +63,7 @@
 
             <SeekBar
                 android:id="@+id/seekBar"
-                android:layout_width="162mm"
+                android:layout_width="161mm"
                 android:layout_height="wrap_content"
 
                 android:progressDrawable="@color/green"

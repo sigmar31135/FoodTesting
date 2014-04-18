@@ -167,10 +167,6 @@ public class Attribute extends Activity{
 					if(data_child.get(j).get("min").contentEquals(data_child.get(j).get("max")) == false)
 						bar.addView(okButton, head_params);
 					
-					
-				
-				   	
-					
 					seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 				        @SuppressLint("ResourceAsColor") public void onProgressChanged(SeekBar seekBar,int progress, boolean fromUser){
 				            //Do something here with new value
