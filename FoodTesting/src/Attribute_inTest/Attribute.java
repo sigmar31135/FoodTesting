@@ -318,7 +318,7 @@ public class Attribute extends Activity{
 					
 					if(data_child.get(j).get("min").contentEquals(data_child.get(j).get("max")) == false)
 						bar.addView(okButton, head_params);
-					
+				
 				
 				   	
 				   	
