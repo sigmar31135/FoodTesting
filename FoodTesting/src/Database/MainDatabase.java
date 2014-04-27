@@ -18,7 +18,7 @@ public class MainDatabase  extends SQLiteOpenHelper{
 		// TODO Auto-generated method stub
 		
 		arg0.execSQL("CREATE TABLE URL ( url TEXT);");
-		arg0.execSQL("INSERT INTO url VALUES('http://food.tartecake.com');");
+		arg0.execSQL("INSERT INTO url VALUES('http://158.108.32.103');");
 		
 	}
 
