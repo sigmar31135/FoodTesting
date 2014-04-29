@@ -1,0 +1,156 @@
+body{
+	background-color: #ebf2f4;
+	background-image: url('/image/pattern-food.png');
+	background-repeat: repeat;
+	background-position: top left;
+	background-attachment: scroll;
+	font: 14px 'Tienne', Georgia, Cambria, Times, serif;
+}
+header{
+	/* padding-top: 120px; */
+	/* padding-bottom: 20px; */
+	background-color: #fff;
+	overflow: hidden;
+	-webkit-box-shadow: 0 3px 0 rgba(0, 0, 0, .04);
+	-moz-box-shadow: 0 3px 0 rgba(0, 0, 0, .04);
+	box-shadow: 0 3px 0 rgba(0, 0, 0, .04);
+}
+.panel.login{
+	margin-top: 15%;
+	margin-right: 25%;
+	margin-left: 25%;
+	box-shadow: inset 0 -3px 0 rgba(0, 0, 0, .05), 0 1px 3px rgba(0, 0, 0, .20);
+}
+.login-btn{
+	text-align: right;
+}
+.button.signin{
+	font: bold 14px Arvo, Georgia, Times, serif;
+	text-transform: uppercase;
+	text-align: center;
+	letter-spacing: 0.10em;
+	color: #fff;
+	margin: 0;
+	padding: 8px 9px;
+	background: #76ad21;
+	border: 0;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+	-webkit-transition:padding 0.5s; /* For Safari 3.1 to 6.0 */
+	transition:padding 0.5s;
+}
+.button.signin:hover{
+	background:#5B851A;
+	padding:8px 20px;
+}
+.button.menu{
+	font: bold 14px Arvo, Georgia, Times, serif;
+	text-transform: uppercase;
+	text-align: center;
+	letter-spacing: 0.10em;
+	color: #fff;
+	margin: 0;
+	padding: 10px 12px;
+	background-color: #4099ff;
+	border: 0;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+	-webkit-transition:padding 0.5s,background-color 500ms ease-out; /* For Safari 3.1 to 6.0 */
+	transition:padding 0.5s,background-color 500ms ease-out;
+
+}
+.button.menu:hover{
+	background:#3c90f0;
+	padding:15px 25px;
+}
+.button.menu.signout{
+	background-color:red;
+}
+.button.menu.signout:hover{
+	background-color:rgb(231,97,97);
+}
+.button.add,.button.next{
+	font: bold 14px Arvo, Georgia, Times, serif;
+	text-transform: uppercase;
+	text-align: center;
+	letter-spacing: 0.10em;
+	color: #fff;
+	margin: 0;
+	padding: 10px 12px;
+	background-color: #4099ff;
+	border: 0;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+	-webkit-transition:padding 0.5s,background-color 500ms ease-out; /* For Safari 3.1 to 6.0 */
+	transition:padding 0.5s,background-color 500ms ease-out;
+	float:right;
+}
+.button.add:hover,.button.next:hover{
+	background:#3c90f0;
+	padding:10px 25px;
+}
+.button.next{
+	float:none;
+}
+.panel{
+	background-color: white;
+	box-shadow: inset 0 -3px 0 rgba(0, 0, 0, .05), 0 1px 3px rgba(0, 0, 0, .20);
+}
+h3.header{
+	font-size: 30px;
+	color: #706340;
+	text-transform: uppercase;
+	margin-top: 30px;
+	overflow: hidden;
+	position: relative;
+}
+h2.header{
+	font: normal 30px 'Patua One';
+	color: #c4584a;
+	margin-top: 30px;
+	margin-bottom: 6px;
+}
+h2.header2{
+	font: normal 30px 'Patua One';
+	color: #c4584a;
+	margin-top: 10px;
+	margin-bottom: 20px;
+}
+.feature-image{
+	margin: -20px -20px;
+	position: relative;
+	overflow: hidden;
+}
+.feature-image.new:after {
+	width: 100%;
+	height: 4px;
+	background: url(http://demo.mintthemes.com/foodie/wp-content/themes/foodie/images/feature-image-mask.png) repeat;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	z-index: 10;
+	content: " ";
+	display: block;
+}
+.content{
+	padding-top: 50px;
+}
+.button-group.right{
+	margin-top: 30px;
+}
+.wrap{
+	height: 100%;
+	min-height: 100%;
+	height:auto !important;
+	margin-bottom: 50px;
+}
+footer{
+	height:50px;
+}
+.pie{
+	width:50px;
+	float:left;
+}
